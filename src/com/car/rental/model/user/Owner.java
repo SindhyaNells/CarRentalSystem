@@ -9,8 +9,8 @@ public class Owner extends User{
     private String ownerRating;
     private String ownerComments;
 
-    public Owner(String user_id,String user_name,String user_email,String user_password,Address user_address){
-        super(user_id,user_name,user_email,user_password,user_address);
+    public Owner(String user_id,String user_name,String user_email,String user_password,Address user_address,String user_contact){
+        super(user_id,user_name,user_email,user_password,user_address,user_contact);
     }
 
     public String getOwnerRating() {

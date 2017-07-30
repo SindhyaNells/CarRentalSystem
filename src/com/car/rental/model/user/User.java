@@ -8,19 +8,20 @@ public abstract class User {
 
     private String userId;
     private String userName;
-    private String userType;
-    private String contantNumber;
+//    private String userType;
+    private String contactNumber;
     private String emailId;
     private String password;
     private Address address;
 
-    public User(String user_id,String user_name,String user_email,String user_password,Address user_address){
+    public User(String user_id,String user_name,String user_email,String user_password,Address user_address,String contact_num){
 
         this.userId=user_id;
         this.userName=user_name;
         this.emailId=user_email;
         this.password=user_password;
         this.address=user_address;
+        this.contactNumber=contact_num;
     }
 
     public String getUserId() {
@@ -39,20 +40,12 @@ public abstract class User {
         this.userName = userName;
     }
 
-    public String getUserType() {
-        return userType;
-    }
-
-    public void setUserType(String userType) {
-        this.userType = userType;
-    }
-
-    public String getContantNumber() {
-        return contantNumber;
+    public String getContactNumber() {
+        return contactNumber;
     }
 
     public void setContantNumber(String contantNumber) {
-        this.contantNumber = contantNumber;
+        this.contactNumber = contantNumber;
     }
 
     public String getEmailId() {
