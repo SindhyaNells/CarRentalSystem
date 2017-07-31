@@ -3,18 +3,21 @@ package com.car.rental;
 /**
  * Created by sindhya on 7/28/17.
  */
-public enum CarTypeEnum {
+public enum CarMake {
 
     BMW("BMW"),
-    AUDI("AUDI"),
-    FERRARI("FERRARI"),
-    FIAT("FIAT"),
-    NISSAN("NISSAN");
-
+    AUDI("Audi"),
+    FERRARI("Ferrari"),
+    FIAT("Fiat"),
+    NISSAN("Nissan"),
+    HONDA("Honda"),
+    TOYOTA("Toyota"),
+    VOLKSWAGEN("Volkswagen"),
+    PORSCHE("Porsche");
 
     private String carModelName;
 
-    CarTypeEnum(String modelName){
+    CarMake(String modelName){
         this.carModelName=modelName;
     }
 
@@ -25,4 +28,5 @@ public enum CarTypeEnum {
     public void setCarModelName(String carModelName) {
         this.carModelName = carModelName;
     }
+
 }

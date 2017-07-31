@@ -5,23 +5,16 @@ package com.car.rental.model.user;
  */
 public class Address {
 
-    private String doorNumber;
     private String street;
     private String city;
-    private String state;
     private String zipCode;
 
-    public Address(String door_number,String street,String city,String state,String zip_code){
-        this.doorNumber=door_number;
+    public Address(String street,String city,String zip_code){
         this.street=street;
         this.city=city;
-        this.state=state;
         this.zipCode=zip_code;
     }
 
-    public String getDoorNumber() {
-        return doorNumber;
-    }
 
     public String getStreet() {
         return street;
@@ -29,10 +22,6 @@ public class Address {
 
     public String getCity() {
         return city;
-    }
-
-    public String getState() {
-        return state;
     }
 
     public String getZipCode() {

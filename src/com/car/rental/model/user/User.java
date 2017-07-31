@@ -6,7 +6,7 @@ package com.car.rental.model.user;
 public abstract class User {
 
 
-    private String userId;
+    private int userId;
     private String userName;
 //    private String userType;
     private String contactNumber;
@@ -14,7 +14,7 @@ public abstract class User {
     private String password;
     private Address address;
 
-    public User(String user_id,String user_name,String user_email,String user_password,Address user_address,String contact_num){
+    public User(int user_id,String user_name,String user_email,String user_password,Address user_address,String contact_num){
 
         this.userId=user_id;
         this.userName=user_name;
@@ -24,11 +24,11 @@ public abstract class User {
         this.contactNumber=contact_num;
     }
 
-    public String getUserId() {
+    public int getUserId() {
         return userId;
     }
 
-    public void setUserId(String userId) {
+    public void setUserId(int userId) {
         this.userId = userId;
     }
 
