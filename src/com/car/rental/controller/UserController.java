@@ -13,37 +13,23 @@ import java.util.ArrayList;
 public class UserController {
 
 
-    private ArrayList<User> userList=new ArrayList<>();
+    private static ArrayList<User> userList=new ArrayList<>();
 
 
     public ArrayList<User> getUserList() {
         return userList;
     }
 
-    public Owner registerOwner(int user_id, String user_name, String email_id, String password, Address address, String contact) {
-        Owner owner=new Owner(user_id,user_name,email_id,password,address,contact);
-
-        userList.add(owner);
-
-        return owner;
-    }
-
-    public Renter registerRenter(int user_id,String user_name,String email_id,String password,Address address,String contact) {
-        Renter renter=new Renter(user_id,user_name,email_id,password,address,contact);
-
-        userList.add(renter);
-
-        return renter;
-    }
-
 
     public static User register(int user_type,int user_id,String user_name,String email_id,String password,Address address,String contact){
         User user=null;
         if(user_type==1){
-             user=new Owner(user_id,user_name,email_id,password,address,contact);
+            user=new Owner(user_id,user_name,email_id,password,address,contact);
+            userList.add(user);
 
         }else if(user_type==2){
             user=new Renter(user_id,user_name,email_id,password,address,contact);
+            userList.add(user);
         }
         return user;
     }
