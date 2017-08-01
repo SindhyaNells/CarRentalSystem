@@ -1,8 +1,4 @@
-package com.car.rental.model;
-
-import com.car.rental.CarMake;
-import com.car.rental.CarType;
-import com.car.rental.TransmissionType;
+package com.car.rental.model.car;
 
 /**
  * Created by sindhya on 7/28/17.

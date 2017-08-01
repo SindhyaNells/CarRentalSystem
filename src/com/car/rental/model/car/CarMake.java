@@ -1,4 +1,4 @@
-package com.car.rental;
+package com.car.rental.model.car;
 
 /**
  * Created by sindhya on 7/28/17.

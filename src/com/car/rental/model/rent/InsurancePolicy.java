@@ -1,4 +1,4 @@
-package com.car.rental.model;
+package com.car.rental.model.rent;
 
 import java.math.BigDecimal;
 

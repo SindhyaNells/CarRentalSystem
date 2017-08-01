@@ -1,4 +1,6 @@
-package com.car.rental.model;
+package com.car.rental.model.car;
+
+import com.car.rental.model.rent.InsurancePolicy;
 
 import java.util.Date;
 
