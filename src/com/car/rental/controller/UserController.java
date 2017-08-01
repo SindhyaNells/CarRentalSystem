@@ -37,5 +37,17 @@ public class UserController {
     }
 
 
+    public static User register(int user_type,int user_id,String user_name,String email_id,String password,Address address,String contact){
+        User user=null;
+        if(user_type==1){
+             user=new Owner(user_id,user_name,email_id,password,address,contact);
+
+        }else if(user_type==2){
+            user=new Renter(user_id,user_name,email_id,password,address,contact);
+        }
+        return user;
+    }
+
+
 
 }

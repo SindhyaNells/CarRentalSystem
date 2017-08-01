@@ -18,11 +18,11 @@ public class CarRentalTest {
 
         System.out.println("Car Rental Management System");
         System.out.println("Select option:");
-        System.out.println("1.Login 2.Register");
+        /*System.out.println("1.Login 2.Register");
         scanner=new Scanner(System.in);
         if(scanner.nextInt()==1){
 
-        }
+        }*/
 
         System.out.println("Choose user type to register");
         System.out.println("1.Owner 2. Renter");
@@ -59,7 +59,7 @@ public class CarRentalTest {
         scanner=new Scanner(System.in);
         String contact=scanner.nextLine();
 
-        if(user_type==1){
+        /*if(user_type==1){
 
             userController.registerOwner(userController.getUserList().size()+1,user_name,user_email,user_pwd,address,contact);
 
@@ -67,6 +67,9 @@ public class CarRentalTest {
 
             userController.registerRenter(userController.getUserList().size()+1,user_name,user_email,user_pwd,address,contact);
 
-        }
+        }*/
+
+        UserController.register(user_type,userController.getUserList().size()+1,user_name,user_email,user_pwd,address,contact);
+
     }
 }
