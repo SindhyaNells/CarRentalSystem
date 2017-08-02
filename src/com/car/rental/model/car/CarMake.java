@@ -29,4 +29,13 @@ public enum CarMake {
         this.carModelName = carModelName;
     }
 
+    public static CarMake fromFuelMake(String car_make){
+        for(CarMake carMake:values()){
+            if(carMake.carModelName.equals(car_make)){
+                return carMake;
+            }
+        }
+        return null;
+    }
+
 }

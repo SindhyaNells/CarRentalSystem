@@ -7,6 +7,13 @@ import java.math.BigDecimal;
  */
 public class InsurancePolicy{
     private String policyName;
-    private String policyDetails;
     private BigDecimal price;
+
+    public InsurancePolicy(String policy_name,BigDecimal price){
+
+        this.policyName=policy_name;
+        this.price=price;
+
+    }
+
 }

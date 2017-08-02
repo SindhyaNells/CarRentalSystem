@@ -1,10 +1,14 @@
 package com.car.rental;
 
+import com.car.rental.controller.CarController;
 import com.car.rental.controller.UserController;
+import com.car.rental.controller.search.CriteriaCarType;
+import com.car.rental.model.car.Car;
+import com.car.rental.model.rent.InsurancePolicy;
 import com.car.rental.model.user.Address;
-import com.car.rental.model.user.Owner;
-import com.car.rental.model.user.Renter;
 
+import java.math.BigDecimal;
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -71,20 +75,73 @@ public class CarRentalTest {
         }else if(user_type==2){
 
             userController.registerRenter(userController.getUserList().size()+1,user_name,user_email,user_pwd,address,contact);
-
         }*/
 
-        UserController.register(user_type,userController.getUserList().size()+1,user_name,user_email,user_pwd,address,contact);
+        userController.register(user_type,userController.getUserList().size()+1,user_name,user_email,user_pwd,address,contact);
 
     }
 
     private static void listCar(){
         System.out.println("List you car");
 
+        System.out.println("Enter the car color:");
+        scanner=new Scanner(System.in);
+        String color=scanner.nextLine();
+
+        System.out.println("Enter the registation number:");
+        scanner=new Scanner(System.in);
+        String regisNumber=scanner.nextLine();
+
+        System.out.println("Enter the license number:");
+        scanner=new Scanner(System.in);
+        String licenseNumber=scanner.nextLine();
+
+        System.out.println("Enter the passenger capacity:");
+        scanner=new Scanner(System.in);
+        int passengerCapacity=scanner.nextInt();
+
+        System.out.println("Enter the location:");
+        scanner=new Scanner(System.in);
+        String location=scanner.nextLine();
+
+        System.out.println("Enter the insurance policy name:");
+        scanner=new Scanner(System.in);
+        String policy_name=scanner.nextLine();
+
+        System.out.println("Enter the insurance policy price:");
+        scanner=new Scanner(System.in);
+        BigDecimal policy_price=scanner.nextBigDecimal();
+
+        InsurancePolicy insurancePolicy=new InsurancePolicy(policy_name,policy_price);
+
+        System.out.println("Enter the Car Type (Luxury,Sedan,SUV,Coupe):");
+        scanner=new Scanner(System.in);
+        String carType=scanner.nextLine();
+
+        System.out.println("Enter the Car Make (Audi,Fiat,Nissan,Honda):");
+        scanner=new Scanner(System.in);
+        String carMake=scanner.nextLine();
+
+        System.out.println("Enter the Fuel Type (Electric,Gas):");
+        scanner=new Scanner(System.in);
+        String fuelType=scanner.nextLine();
+
+        System.out.println("Enter the Transmission Type (Automatic,Manual)");
+        scanner=new Scanner(System.in);
+        String transmissionType=scanner.nextLine();
+
+        CarController carController=new CarController();
+        carController.buildCar(color,regisNumber,licenseNumber,passengerCapacity,insurancePolicy,location,carType,carMake,fuelType,transmissionType);
 
     }
 
     private static void rentCar(){
 
+        CarController carController=new CarController();
+        CriteriaCarType carTypeCriteria=new CriteriaCarType("Coupe");
+        List<Car> carList = carTypeCriteria.meetCriteria(carController.getCarList());
+
+        for (Car car:carList)
+            System.out.println(car.getCarType());
     }
 }

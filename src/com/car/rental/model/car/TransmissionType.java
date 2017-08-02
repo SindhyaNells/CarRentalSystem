@@ -21,4 +21,13 @@ public enum TransmissionType {
     public void setTransmissionType(String transmissionType) {
         this.transmissionType = transmissionType;
     }
+
+    public static TransmissionType fromTransmissionType(String trans_type){
+        for(TransmissionType transmissionType:values()){
+            if(transmissionType.transmissionType.equals(trans_type)){
+                return transmissionType;
+            }
+        }
+        return null;
+    }
 }

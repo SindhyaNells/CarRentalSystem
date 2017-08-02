@@ -9,15 +9,27 @@ import java.util.Date;
  */
 public class Vehicle {
 
-    private float mileage;
-    private int odometerValue;
-    private String vehicleColor;
+    private CarColor vehicleColor;
     private String registrationNumber;
     private String licenseNumber;
     private int passengerCapacity;
-    private int baggageCapacity;
     private InsurancePolicy policy;
-    private Date lastServiceDate;
-    private String Location;
+    private String location;
 
+    public Vehicle(CarColor vehicleColor,String registrationNumber,String licenseNumber,int passengerCapacity,InsurancePolicy policy,String location){
+        this.vehicleColor=vehicleColor;
+        this.registrationNumber=registrationNumber;
+        this.licenseNumber=licenseNumber;
+        this.passengerCapacity=passengerCapacity;
+        this.policy=policy;
+        this.location=location;
+    }
+
+    public CarColor getVehicleColor() {
+        return vehicleColor;
+    }
+
+    public void setVehicleColor(CarColor vehicleColor) {
+        this.vehicleColor = vehicleColor;
+    }
 }

@@ -13,7 +13,7 @@ import java.util.ArrayList;
 public class UserController {
 
 
-    private static ArrayList<User> userList=new ArrayList<>();
+    private ArrayList<User> userList=new ArrayList<>();
 
 
     public ArrayList<User> getUserList() {
@@ -21,7 +21,7 @@ public class UserController {
     }
 
 
-    public static User register(int user_type,int user_id,String user_name,String email_id,String password,Address address,String contact){
+    public User register(int user_type,int user_id,String user_name,String email_id,String password,Address address,String contact){
         User user=null;
         if(user_type==1){
             user=new Owner(user_id,user_name,email_id,password,address,contact);
