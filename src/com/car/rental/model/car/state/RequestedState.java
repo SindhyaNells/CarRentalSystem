@@ -15,26 +15,28 @@ public class RequestedState implements CarState {
 
     @Override
     public String requestCar(Car car) {
-        return null;
+        return "The car is already in requested state";
     }
 
     @Override
     public String denyCarRequest(Car car) {
-        return null;
+        rentCar.setState(new AvailableState(car));
+        return "The car request is denied.";
     }
 
     @Override
     public String activateCarListing(Car car) {
-        return null;
+        return "The car is active already";
     }
 
     @Override
     public String inactivateCarListing(Car car) {
-        return null;
+        return "The car cannot be made inactive. It is in requested state.";
     }
 
     @Override
     public String rentCar(Car car) {
-        return null;
+        rentCar.setState(new RentedState(car));
+        return "The car is rented.";
     }
 }

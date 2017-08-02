@@ -14,28 +14,30 @@ public class Car extends Vehicle implements RentCar {
     private FuelType fuelType;
     private TransmissionType transmissionType;
 
+
+
     @Override
-    public void requestCar() {
+    public void requestCar(Car car) {
 
     }
 
     @Override
-    public void denyCarRequest() {
+    public void denyCarRequest(Car car) {
 
     }
 
     @Override
-    public void activateCarListing() {
+    public void activateCarListing(Car car) {
 
     }
 
     @Override
-    public void inactivateCarListing() {
+    public void inactivateCarListing(Car car) {
 
     }
 
     @Override
-    public void rentCar() {
+    public void rentCar(Car car) {
 
     }
 

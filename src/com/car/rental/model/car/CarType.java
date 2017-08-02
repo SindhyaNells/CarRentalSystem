@@ -5,12 +5,12 @@ package com.car.rental.model.car;
  */
 public enum CarType {
 
-    SEDAN("SEDAN"),
-    COUPE("COUPE"),
+    SEDAN("Sedan"),
+    COUPE("Coupe"),
     SUV("SUV"),
-    CROSSOVER("CROSSOVER"),
-    CONVETIBLE("CONVERTIBLE"),
-    LUXURY("LUXURY");
+    CROSSOVER("Crossover"),
+    CONVETIBLE("Convertible"),
+    LUXURY("Luxury");
 
     private String car_type;
 

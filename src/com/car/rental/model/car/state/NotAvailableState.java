@@ -20,7 +20,7 @@ public class NotAvailableState implements CarState {
 
     @Override
     public String denyCarRequest(Car car) {
-        return "This car is not requested";
+        return "This car is not available and there are no requests for this car";
     }
 
     @Override
@@ -31,7 +31,7 @@ public class NotAvailableState implements CarState {
 
     @Override
     public String inactivateCarListing(Car car) {
-        return "This car is not available";
+        return "This car is already not available";
     }
 
     @Override

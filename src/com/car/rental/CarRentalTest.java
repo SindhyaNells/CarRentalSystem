@@ -31,10 +31,15 @@ public class CarRentalTest {
         int user_type=scanner.nextInt();
         registerUser(user_type);
 
+        if(user_type==1){
+            listCar();
+        }else{
+            rentCar();
+        }
 
     }
 
-    public static void registerUser(int user_type){
+    private static void registerUser(int user_type){
         UserController userController=new UserController();
 
         System.out.println("Enter the user name");
@@ -70,6 +75,16 @@ public class CarRentalTest {
         }*/
 
         UserController.register(user_type,userController.getUserList().size()+1,user_name,user_email,user_pwd,address,contact);
+
+    }
+
+    private static void listCar(){
+        System.out.println("List you car");
+
+
+    }
+
+    private static void rentCar(){
 
     }
 }

@@ -25,7 +25,7 @@ public class RentedState implements CarState {
     @Override
     public String activateCarListing(Car car) {
         rentCar.setState(new AvailableState(car));
-        return "This car is in active already and the car is rented.";
+        return "This car is active already and the car is rented.";
     }
 
     @Override
