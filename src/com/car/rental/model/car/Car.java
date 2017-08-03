@@ -15,6 +15,9 @@ public class Car extends Vehicle implements RentCar {
     private FuelType fuelType;
     private TransmissionType transmissionType;
 
+    public Car(){
+    	
+    }
 
     public Car(CarColor vehicleColor, String registrationNumber, String licenseNumber, int passengerCapacity, InsurancePolicy policy, String location,CarType carType,CarMake carMake,FuelType fuelType,TransmissionType transmissionType){
         super(vehicleColor,registrationNumber,licenseNumber,passengerCapacity,policy,location);
@@ -22,6 +25,10 @@ public class Car extends Vehicle implements RentCar {
         this.carMake=carMake;
         this.fuelType=fuelType;
         this.transmissionType=transmissionType;
+    }
+    
+    public void upgrade(){
+    	
     }
 
     public CarType getCarType() {

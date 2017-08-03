@@ -44,6 +44,7 @@ public class CarController {
                 car=new LuxuryCar(carColorEnum,registrationNumber,licenseNumber,passengerCapacity,policy,location,carTypeEnum,carMakeEnum,fuelTypeEnum,transmissionTypeEnum);
                 break;
         }
+       
 
         carList.add(car);
 

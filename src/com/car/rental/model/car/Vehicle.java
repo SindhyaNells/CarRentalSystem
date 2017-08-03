@@ -16,6 +16,12 @@ public class Vehicle {
     private InsurancePolicy policy;
     private String location;
 
+    
+    public Vehicle(){
+    	
+    }
+
+
     public Vehicle(CarColor vehicleColor,String registrationNumber,String licenseNumber,int passengerCapacity,InsurancePolicy policy,String location){
         this.vehicleColor=vehicleColor;
         this.registrationNumber=registrationNumber;
