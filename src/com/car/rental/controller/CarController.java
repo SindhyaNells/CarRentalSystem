@@ -5,7 +5,8 @@ import com.car.rental.model.car.carType.CoupeCar;
 import com.car.rental.model.car.carType.LuxuryCar;
 import com.car.rental.model.car.carType.SUVCar;
 import com.car.rental.model.car.carType.SedanCar;
-import com.car.rental.model.rent.InsurancePolicy;
+import com.car.rental.model.car.InsurancePolicy;
+import com.car.rental.model.rent.Location;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,19 +30,20 @@ public class CarController {
         CarMake carMakeEnum=CarMake.fromFuelMake(carMake);
         FuelType fuelTypeEnum=FuelType.fromFuelType(fuelType);
         TransmissionType transmissionTypeEnum=TransmissionType.fromTransmissionType(transmissionType);
+        Location locationEnum=Location.fromLocation(location);
         switch (carTypeEnum){
 
             case COUPE:
-                car=new CoupeCar(carColorEnum,registrationNumber,licenseNumber,passengerCapacity,policy,location,carTypeEnum,carMakeEnum,fuelTypeEnum,transmissionTypeEnum);
+                car=new CoupeCar(carColorEnum,registrationNumber,licenseNumber,passengerCapacity,policy,locationEnum,carTypeEnum,carMakeEnum,fuelTypeEnum,transmissionTypeEnum);
                 break;
             case SEDAN:
-                car=new SedanCar(carColorEnum,registrationNumber,licenseNumber,passengerCapacity,policy,location,carTypeEnum,carMakeEnum,fuelTypeEnum,transmissionTypeEnum);
+                car=new SedanCar(carColorEnum,registrationNumber,licenseNumber,passengerCapacity,policy,locationEnum,carTypeEnum,carMakeEnum,fuelTypeEnum,transmissionTypeEnum);
                 break;
             case SUV:
-                car=new SUVCar(carColorEnum,registrationNumber,licenseNumber,passengerCapacity,policy,location,carTypeEnum,carMakeEnum,fuelTypeEnum,transmissionTypeEnum);
+                car=new SUVCar(carColorEnum,registrationNumber,licenseNumber,passengerCapacity,policy,locationEnum,carTypeEnum,carMakeEnum,fuelTypeEnum,transmissionTypeEnum);
                 break;
             case LUXURY:
-                car=new LuxuryCar(carColorEnum,registrationNumber,licenseNumber,passengerCapacity,policy,location,carTypeEnum,carMakeEnum,fuelTypeEnum,transmissionTypeEnum);
+                car=new LuxuryCar(carColorEnum,registrationNumber,licenseNumber,passengerCapacity,policy,locationEnum,carTypeEnum,carMakeEnum,fuelTypeEnum,transmissionTypeEnum);
                 break;
         }
        

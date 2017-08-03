@@ -2,12 +2,15 @@ package com.car.rental;
 
 import com.car.rental.controller.CarController;
 import com.car.rental.controller.UserController;
+import com.car.rental.controller.search.CriteriaCarColor;
+import com.car.rental.controller.search.CriteriaCarMake;
 import com.car.rental.controller.search.CriteriaCarType;
 import com.car.rental.model.car.Car;
-import com.car.rental.model.rent.InsurancePolicy;
+import com.car.rental.model.car.InsurancePolicy;
 import com.car.rental.model.user.Address;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -100,7 +103,7 @@ public class CarRentalTest {
         scanner=new Scanner(System.in);
         int passengerCapacity=scanner.nextInt();
 
-        System.out.println("Enter the location:");
+        System.out.println("Enter the location(city):");
         scanner=new Scanner(System.in);
         String location=scanner.nextLine();
 
@@ -138,10 +141,38 @@ public class CarRentalTest {
     private static void rentCar(){
 
         CarController carController=new CarController();
-        CriteriaCarType carTypeCriteria=new CriteriaCarType("Coupe");
-        List<Car> carList = carTypeCriteria.meetCriteria(carController.getCarList());
 
-        for (Car car:carList)
+        System.out.println("Search Cars");
+        System.out.println("Search By 1.Car Type 2.Car Make 3:Car Color");
+        scanner=new Scanner(System.in);
+        int searchType=scanner.nextInt();
+
+        List<Car> carResultList=new ArrayList<>();
+
+        if(searchType==1) {
+            System.out.println("Enter the car type:");
+            scanner=new Scanner(System.in);
+            String carType=scanner.nextLine();
+            CriteriaCarType carTypeCriteria = new CriteriaCarType(carType);
+            carResultList = carTypeCriteria.meetCriteria(carController.getCarList());
+
+        }else if(searchType==2){
+            System.out.println("Enter the car make:");
+            scanner=new Scanner(System.in);
+            String carMake=scanner.nextLine();
+            CriteriaCarMake carMakeCriteria=new CriteriaCarMake(carMake);
+            carResultList = carMakeCriteria.meetCriteria(carController.getCarList());
+
+        }else if(searchType == 3){
+            System.out.println("Enter the car color:");
+            scanner=new Scanner(System.in);
+            String carColor=scanner.nextLine();
+            CriteriaCarColor carColorCriteria=new CriteriaCarColor(carColor);
+            carResultList=carColorCriteria.meetCriteria(carController.getCarList());
+        }
+
+
+        for (Car car:carResultList)
             System.out.println(car.getCarType());
     }
 }

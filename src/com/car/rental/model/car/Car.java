@@ -2,7 +2,7 @@ package com.car.rental.model.car;
 
 import com.car.rental.model.car.state.CarState;
 import com.car.rental.model.car.state.RentCar;
-import com.car.rental.model.rent.InsurancePolicy;
+import com.car.rental.model.rent.Location;
 
 /**
  * Created by sindhya on 7/28/17.
@@ -19,7 +19,7 @@ public abstract class Car extends Vehicle implements RentCar {
     	
     }
 
-    public Car(CarColor vehicleColor, String registrationNumber, String licenseNumber, int passengerCapacity, InsurancePolicy policy, String location,CarType carType,CarMake carMake,FuelType fuelType,TransmissionType transmissionType){
+    public Car(CarColor vehicleColor, String registrationNumber, String licenseNumber, int passengerCapacity, InsurancePolicy policy, Location location, CarType carType, CarMake carMake, FuelType fuelType, TransmissionType transmissionType){
         super(vehicleColor,registrationNumber,licenseNumber,passengerCapacity,policy,location);
         this.carType=carType;
         this.carMake=carMake;

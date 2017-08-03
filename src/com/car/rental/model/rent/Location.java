@@ -1,5 +1,7 @@
 package com.car.rental.model.rent;
 
+import com.car.rental.model.car.TransmissionType;
+
 /**
  * Created by sindhya on 7/30/17.
  */
@@ -17,5 +19,14 @@ public enum Location {
     Location(String city,String state){
         this.state=state;
         this.city=city;
+    }
+
+    public static Location fromLocation(String loc){
+        for(Location location:values()){
+            if(location.city.equals(loc)){
+                return location;
+            }
+        }
+        return null;
     }
 }

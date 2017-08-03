@@ -1,8 +1,6 @@
 package com.car.rental.model.car;
 
-import com.car.rental.model.rent.InsurancePolicy;
-
-import java.util.Date;
+import com.car.rental.model.rent.Location;
 
 /**
  * Created by sindhya on 7/30/17.
@@ -14,15 +12,15 @@ public class Vehicle {
     private String licenseNumber;
     private int passengerCapacity;
     private InsurancePolicy policy;
-    private String location;
+    private Location location;
 
-    
+
     public Vehicle(){
     	
     }
 
 
-    public Vehicle(CarColor vehicleColor,String registrationNumber,String licenseNumber,int passengerCapacity,InsurancePolicy policy,String location){
+    public Vehicle(CarColor vehicleColor,String registrationNumber,String licenseNumber,int passengerCapacity,InsurancePolicy policy,Location location){
         this.vehicleColor=vehicleColor;
         this.registrationNumber=registrationNumber;
         this.licenseNumber=licenseNumber;
