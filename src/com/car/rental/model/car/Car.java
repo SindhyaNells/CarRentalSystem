@@ -7,7 +7,7 @@ import com.car.rental.model.rent.InsurancePolicy;
 /**
  * Created by sindhya on 7/28/17.
  */
-public class Car extends Vehicle implements RentCar {
+public abstract class Car extends Vehicle implements RentCar {
 
 
     private CarMake carMake;
