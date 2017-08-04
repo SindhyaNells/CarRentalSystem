@@ -21,10 +21,6 @@ public abstract class Car extends Vehicle implements RentCar {
 
     }
 
-    public Car(CarColor vehicleColor, String registrationNumber, String licenseNumber, int passengerCapacity, String location, CarType carType, CarMake carMake, FuelType fuelType, TransmissionType transmissionType){
-    	
-    }
-
     public Car(CarColor vehicleColor, String registrationNumber, int passengerCapacity, Location location, CarType carType, CarMake carMake, FuelType fuelType, TransmissionType transmissionType,Owner owner,Float price){
         super(vehicleColor,registrationNumber,passengerCapacity,location,owner,price);
         this.carType=carType;

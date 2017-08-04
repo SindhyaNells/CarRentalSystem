@@ -6,10 +6,31 @@ import java.util.Date;
  * Created by sindhya on 7/30/17.
  */
 public class Rental {
-    private Date availabilityDate;
-    private float rentPerDay;
-    private float penaltyFeePerDay;
-    private String pickUpAddress; //same as dropoff address
+    private Date startDate;
+    public Date endDate;
     private float totalAmountPayable;
 
+    public Date getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
+    }
+
+    public Date getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
+    }
+
+    public float getTotalAmountPayable() {
+        return totalAmountPayable;
+    }
+
+    public void setTotalAmountPayable(float totalAmountPayable) {
+        this.totalAmountPayable = totalAmountPayable;
+    }
 }

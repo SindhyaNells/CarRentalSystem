@@ -35,49 +35,44 @@ public class CarRentalTest {
 
         }*/
 
-        System.out.println("Choose user type to register");
-        System.out.println("1.Owner 2. Renter");
-        scanner=new Scanner(System.in);
+        do {
 
-        int user_type=scanner.nextInt();
-        User user=registerUser(user_type);
+            System.out.println("Choose User");
+            System.out.println("1.Owner 2.Renter");
+            scanner=new Scanner(System.in);
+            int user_type = scanner.nextInt();
 
-        if(user_type==1){
-            listCar(user);
-        }else{
-            //TODO:rent car
-            searchCar();
-            sortCar();
-        }
+            System.out.println("Choose operation");
+            System.out.println("1.Register 2.Login ");
+            scanner = new Scanner(System.in);
+            int option=scanner.nextInt();
+
+            if(option==1) {
+                registerUser(user_type);
+            }else if(user_type==2) {
+
+                break;
+            }
+
+            /*if (user_type == 1) {
+                listCar(user);
+            } else {
+                //TODO:rent car
+                //searchCar();
+                //sortCar();
+
+                rentCar();
+            }*/
+        }while(1!=0);
+
+
 
     }
 
     private static User registerUser(int user_type){
         UserController userController=new UserController();
 
-        System.out.println("Enter the user name");
-        scanner=new Scanner(System.in);
-        String user_name=scanner.nextLine();
-
-        System.out.println("Enter the user email");
-        scanner=new Scanner(System.in);
-        String user_email=scanner.nextLine();
-
-        System.out.println("Enter the user password");
-        scanner=new Scanner(System.in);
-        String user_pwd=scanner.nextLine();
-
-        System.out.println("Enter the user address(street,city,zipcode)");
-        scanner=new Scanner(System.in);
-        String user_addr=scanner.nextLine();
-        String[] arr=user_addr.split(",");
-        Address address=new Address(arr[0],arr[1],arr[2]);
-
-        System.out.println("Enter the contact");
-        scanner=new Scanner(System.in);
-        String contact=scanner.nextLine();
-
-        User user=userController.register(user_type,userController.getUserList().size()+1,user_name,user_email,user_pwd,address,contact);
+        User user=userController.register(user_type);
 
         return user;
     }
@@ -127,39 +122,6 @@ public class CarRentalTest {
 
     }
 
-    private static void searchCar(){
-
-        CarController carController=new CarController();
-
-        System.out.println("Search Cars");
-        System.out.println("Search By 1.Car Type 2.Car Make 3:Car Color");
-        scanner=new Scanner(System.in);
-        int searchType=scanner.nextInt();
-
-        List<Car> carResultList=new ArrayList<>();
-
-        if(searchType==1) {
-            System.out.println("Enter the car type:");
-            scanner=new Scanner(System.in);
-            String carType=scanner.nextLine();
-            carController.displayCar(carController.searchByCarType(carType));
-
-        }else if(searchType==2){
-            System.out.println("Enter the car make:");
-            scanner=new Scanner(System.in);
-            String carMake=scanner.nextLine();
-            carController.displayCar(carController.searchByCarMake(carMake));
-
-        }else if(searchType == 3){
-            System.out.println("Enter the car color:");
-            scanner=new Scanner(System.in);
-            String carColor=scanner.nextLine();
-            carController.displayCar(carController.searchByCarColor(carColor));
-
-        }
-
-
-    }
 
     private static void sortCar() {
 
@@ -181,6 +143,13 @@ public class CarRentalTest {
 
         System.out.println("Rent Car");
 
+        CarController carController=new CarController();
+
+        List<Car> carList=carController.getCarList();
+
+        for(int i=0;i<carList.size();i++){
+            System.out.println(i+" CarType:"+carList.get(i).getCarType()+" CarColor:"+carList.get(i).getVehicleColor()+" CarMake:"+carList.get(i).getCarMake()+" Price:"+carList.get(i).getPrice()+" Location:"+carList.get(i).getLocation());
+        }
 
     }
 }

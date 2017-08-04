@@ -5,10 +5,10 @@ package com.car.rental.model.enums;
  */
 public enum CarColor {
 
-    BLACK("Black"),
-    WHITE("White"),
-    RED("Red"),
-    BLUE("Blue");
+    BLACK("black"),
+    WHITE("white"),
+    RED("red"),
+    BLUE("blue");
 
     private String carColor;
 
