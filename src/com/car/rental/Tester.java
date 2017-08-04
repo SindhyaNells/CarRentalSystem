@@ -39,7 +39,7 @@ public class Tester {
         Car c = new LuxuryCar(CarColor.BLACK, "ssgas", 4, Location.NEWYORK, CarType.LUXURY, CarMake.BMW, FuelType.ELECTRIC, TransmissionType.AUTOMATIC,owner2,12f);
         carResultList.add(c);
 
-        carController.setCarList(carResultList);
+        carController.setCarList(new CarList(carResultList));
 
         carController.searchCar();
     }

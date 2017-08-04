@@ -145,7 +145,7 @@ public class CarRentalTest {
 
         CarController carController=new CarController();
 
-        List<Car> carList=carController.getCarList();
+        List<Car> carList=carController.getCarList().getCarList();
 
         for(int i=0;i<carList.size();i++){
             System.out.println(i+" CarType:"+carList.get(i).getCarType()+" CarColor:"+carList.get(i).getVehicleColor()+" CarMake:"+carList.get(i).getCarMake()+" Price:"+carList.get(i).getPrice()+" Location:"+carList.get(i).getLocation());
