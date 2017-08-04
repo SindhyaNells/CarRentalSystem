@@ -3,6 +3,10 @@ package com.car.rental.model.car;
 import com.car.rental.model.car.state.CarState;
 import com.car.rental.model.car.state.RentCar;
 import com.car.rental.model.rent.Location;
+import com.car.rental.model.user.Owner;
+import com.car.rental.model.user.User;
+
+import java.math.BigDecimal;
 
 /**
  * Created by sindhya on 7/28/17.
@@ -16,11 +20,15 @@ public abstract class Car extends Vehicle implements RentCar {
     private TransmissionType transmissionType;
 
     public Car(){
+
+    }
+
+    public Car(CarColor vehicleColor, String registrationNumber, String licenseNumber, int passengerCapacity, String location, CarType carType, CarMake carMake, FuelType fuelType, TransmissionType transmissionType){
     	
     }
 
-    public Car(CarColor vehicleColor, String registrationNumber, String licenseNumber, int passengerCapacity, InsurancePolicy policy, Location location, CarType carType, CarMake carMake, FuelType fuelType, TransmissionType transmissionType){
-        super(vehicleColor,registrationNumber,licenseNumber,passengerCapacity,policy,location);
+    public Car(CarColor vehicleColor, String registrationNumber, int passengerCapacity, Location location, CarType carType, CarMake carMake, FuelType fuelType, TransmissionType transmissionType,Owner owner,Float price){
+        super(vehicleColor,registrationNumber,passengerCapacity,location,owner,price);
         this.carType=carType;
         this.carMake=carMake;
         this.fuelType=fuelType;

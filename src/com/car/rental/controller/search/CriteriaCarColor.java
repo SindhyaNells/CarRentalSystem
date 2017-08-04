@@ -3,6 +3,7 @@ package com.car.rental.controller.search;
 import com.car.rental.model.car.Car;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -25,5 +26,25 @@ public class CriteriaCarColor implements CarSearchCriteria {
             }
         }
         return carResultList;
+    }
+
+    public class CriteriaIterator implements Iterator{
+
+        @Override
+        public boolean hasNext() {
+        // TODO Auto-generated method stub
+            System.out.println("");
+            return false;
+        }
+
+        @Override
+        public Object next() {
+        // TODO Auto-generated method stub
+            return null;
+        }
+
+
+
+
     }
 }

@@ -9,7 +9,7 @@ public interface CarState {
 
     public String requestCar(Car car);
     public String denyCarRequest(Car car);
-    public String approveCarRequest(Car car);
+    //public String approveCarRequest(Car car);
     public String activateCarListing(Car car);
     public String inactivateCarListing(Car car);
     public String rentCar(Car car);

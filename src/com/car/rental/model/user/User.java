@@ -24,6 +24,11 @@ public abstract class User {
         this.contactNumber=contact_num;
     }
 
+    public Float getOwnerRating() {
+        System.out.println("From User");
+        return 0f;
+    }
+
     public int getUserId() {
         return userId;
     }

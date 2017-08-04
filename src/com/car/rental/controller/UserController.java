@@ -25,6 +25,7 @@ public class UserController {
         User user=null;
         if(user_type==1){
             user=new Owner(user_id,user_name,email_id,password,address,contact);
+            user.getOwnerRating();
             userList.add(user);
 
         }else if(user_type==2){

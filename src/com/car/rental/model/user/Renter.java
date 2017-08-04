@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class Renter extends User{
 
 
-    private String renterRating;
+    private Float renterRating;
     private int numOfRatings;
     private int totalPoints;
     private ArrayList<String> renterComments;
@@ -17,11 +17,11 @@ public class Renter extends User{
         super(user_id,user_name,user_email,user_password,user_address,user_contact);
     }
 
-    public String getRenterRating() {
+    public Float getRenterRating() {
         return renterRating;
     }
 
-    public void setRenterRating(String renterRating) {
+    public void setRenterRating(Float renterRating) {
         this.renterRating = renterRating;
     }
 

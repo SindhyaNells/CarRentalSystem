@@ -5,8 +5,9 @@ package com.car.rental.model.car;
  */
 public enum FuelType {
 
-    ELECTRIC("Electric"),
-    GAS("Gas");
+    PETROL("Petrol"),
+    DIESEL("Diesel"),
+    ELECTRIC("Electric");
 
     private String fuel_type;
 
