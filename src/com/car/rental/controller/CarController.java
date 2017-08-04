@@ -9,12 +9,10 @@ import com.car.rental.model.car.carType.CoupeCar;
 import com.car.rental.model.car.carType.LuxuryCar;
 import com.car.rental.model.car.carType.SUVCar;
 import com.car.rental.model.car.carType.SedanCar;
-import com.car.rental.model.car.InsurancePolicy;
-import com.car.rental.model.rent.Location;
+import com.car.rental.model.enums.*;
+import com.car.rental.model.enums.Location;
 import com.car.rental.model.user.Owner;
-import com.car.rental.model.user.User;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 

@@ -1,6 +1,4 @@
-package com.car.rental.model.rent;
-
-import com.car.rental.model.car.TransmissionType;
+package com.car.rental.model.enums;
 
 /**
  * Created by sindhya on 7/30/17.

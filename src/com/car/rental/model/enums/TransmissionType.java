@@ -1,4 +1,4 @@
-package com.car.rental.model.car;
+package com.car.rental.model.enums;
 
 /**
  * Created by sindhya on 7/30/17.

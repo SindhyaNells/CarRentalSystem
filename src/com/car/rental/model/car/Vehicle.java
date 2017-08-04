@@ -1,10 +1,9 @@
 package com.car.rental.model.car;
 
-import com.car.rental.model.rent.Location;
+import com.car.rental.model.enums.CarColor;
+import com.car.rental.model.enums.Location;
 import com.car.rental.model.user.Owner;
-import com.car.rental.model.user.User;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 
 /**

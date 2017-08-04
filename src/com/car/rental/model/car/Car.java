@@ -2,11 +2,9 @@ package com.car.rental.model.car;
 
 import com.car.rental.model.car.state.CarState;
 import com.car.rental.model.car.state.RentCar;
-import com.car.rental.model.rent.Location;
+import com.car.rental.model.enums.*;
+import com.car.rental.model.enums.Location;
 import com.car.rental.model.user.Owner;
-import com.car.rental.model.user.User;
-
-import java.math.BigDecimal;
 
 /**
  * Created by sindhya on 7/28/17.

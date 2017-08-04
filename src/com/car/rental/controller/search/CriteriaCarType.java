@@ -1,7 +1,6 @@
 package com.car.rental.controller.search;
 
 import com.car.rental.model.car.Car;
-import com.car.rental.model.car.CarType;
 
 import java.util.ArrayList;
 import java.util.List;
