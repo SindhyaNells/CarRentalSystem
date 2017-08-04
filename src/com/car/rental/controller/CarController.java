@@ -23,13 +23,14 @@ import java.util.Scanner;
 public class CarController {
 
     private static Scanner scanner;
-    List<Car> carList=new ArrayList<>();
+    //List<Car> carList=new ArrayList<>();
+    CarList carList=new CarList();
 
-    public List<Car> getCarList() {
+    public CarList getCarList() {
         return carList;
     }
 
-    public void setCarList(List<Car> carList) {
+    public void setCarList(CarList carList) {
         this.carList = carList;
     }
 
@@ -73,7 +74,7 @@ public class CarController {
 
     public List<Car> sortCars(SortingStrategy sortingStrategy){
 
-        return sortingStrategy.sortCar(carList);
+        return sortingStrategy.sortCar(carList.getCarList());
     }
 
 
@@ -115,8 +116,7 @@ public class CarController {
         System.out.println("Searching by Car Type");
         List<Car> carResultList=new ArrayList<>();
         CriteriaCarType carTypeCriteria = new CriteriaCarType(carType);
-        carResultList = carTypeCriteria.meetCriteria(carList);
-
+        carResultList = carTypeCriteria.meetCriteria(carList.getCarList());
         return carResultList;
     }
 
@@ -125,8 +125,7 @@ public class CarController {
         System.out.println("Searching by Car Make");
         List<Car> carResultList=new ArrayList<>();
         CriteriaCarMake carMakeCriteria=new CriteriaCarMake(carMake);
-        carResultList = carMakeCriteria.meetCriteria(carList);
-
+        carResultList = carMakeCriteria.meetCriteria(carList.getCarList());
         return carResultList;
     }
 
@@ -135,8 +134,7 @@ public class CarController {
         System.out.println("Searching by Car Color");
         List<Car> carResultList=new ArrayList<>();
         CriteriaCarColor carColorCriteria=new CriteriaCarColor(carColor);
-        carResultList=carColorCriteria.meetCriteria(carList);
-
+        carResultList=carColorCriteria.meetCriteria(carList.getCarList());
         return carResultList;
     }
 
