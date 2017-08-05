@@ -119,6 +119,8 @@ public class CarController {
 
         buildCar(color,regisNumber,passengerCapacity,location,carType,carMake,fuelType,transmissionType,(Owner) user,price);
 
+        System.out.println("Your Car is listed successfully");
+
     }
 
     public void displayCar(List<Car> carList){
@@ -234,9 +236,10 @@ public class CarController {
 
         System.out.println("Enter the start date(dd-MM-yyyy):");
         scanner=new Scanner(System.in);
+        String start_date=scanner.nextLine();
         Date startDate=null;
         try {
-            startDate = format.parse(scanner.next());
+            startDate = format.parse(start_date);
 
         }catch (ParseException e){
             System.out.println("Parse exception");
@@ -244,9 +247,10 @@ public class CarController {
 
         System.out.println("Enter the end date(dd-MM-yyyy)");
         scanner=new Scanner(System.in);
+        String end_date=scanner.nextLine();
         Date endDate=null;
         try {
-            endDate = format.parse(scanner.next());
+            endDate = format.parse(end_date);
 
         }catch (ParseException e){
             System.out.println("Parse exception");
@@ -261,7 +265,9 @@ public class CarController {
 
         car.getRentalList().add(rental);
 
-        System.out.println("Renting is booked successfullt");
+        System.out.println("Num of Days:"+numDays+" TotalAmount:"+totalAmountPayable);
+
+        System.out.println("Car is booked successfully");
 
     }
 

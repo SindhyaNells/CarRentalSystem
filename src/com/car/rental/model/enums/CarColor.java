@@ -26,7 +26,7 @@ public enum CarColor {
 
     public static CarColor fromCarColor(String cal_color){
         for(CarColor carColor:values()){
-            if(carColor.carColor.equals(cal_color)){
+            if(carColor.carColor.equalsIgnoreCase(cal_color)){
                 return carColor;
             }
         }

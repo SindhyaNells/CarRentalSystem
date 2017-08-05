@@ -31,7 +31,7 @@ public enum CarMake {
 
     public static CarMake fromFuelMake(String car_make){
         for(CarMake carMake:values()){
-            if(carMake.carModelName.equals(car_make)){
+            if(carMake.carModelName.equalsIgnoreCase(car_make)){
                 return carMake;
             }
         }

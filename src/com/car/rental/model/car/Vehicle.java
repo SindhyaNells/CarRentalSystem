@@ -34,6 +34,7 @@ public class Vehicle {
         this.location=location;
         this.owner=owner;
         this.price=price;
+        rentalList=new ArrayList<>();
     }
 
     public String getVehicleColor() {

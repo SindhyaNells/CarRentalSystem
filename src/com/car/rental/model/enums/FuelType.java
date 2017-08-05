@@ -17,7 +17,7 @@ public enum FuelType {
 
     public static FuelType fromFuelType(String fuel_type){
         for(FuelType fuelType:values()){
-            if(fuelType.fuel_type.equals(fuel_type)){
+            if(fuelType.fuel_type.equalsIgnoreCase(fuel_type)){
                 return fuelType;
             }
         }

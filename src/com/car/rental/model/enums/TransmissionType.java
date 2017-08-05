@@ -24,7 +24,7 @@ public enum TransmissionType {
 
     public static TransmissionType fromTransmissionType(String trans_type){
         for(TransmissionType transmissionType:values()){
-            if(transmissionType.transmissionType.equals(trans_type)){
+            if(transmissionType.transmissionType.equalsIgnoreCase(trans_type)){
                 return transmissionType;
             }
         }

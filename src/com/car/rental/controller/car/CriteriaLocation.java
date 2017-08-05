@@ -21,7 +21,7 @@ public class CriteriaLocation implements CarSearchCriteria {
         List<Car> carResultList=new ArrayList<>();
 
         for(Car car: carList){
-            if(car.getCarType().name().equalsIgnoreCase(carLocation)){
+            if(car.getLocation().getCity().equalsIgnoreCase(carLocation)){
                 carResultList.add(car);
             }
         }

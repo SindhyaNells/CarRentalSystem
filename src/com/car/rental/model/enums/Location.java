@@ -9,7 +9,8 @@ public enum Location {
     SEATTLE("Seattle", "WASHINGTON"),
     PORTLAND("Portland", "OREGON"),
     LOSANGELES("Los Angeles", "CALIFORNIA"),
-    NEWYORK("New York", "NEW YORK");
+    NEWYORK("New York", "NEW YORK"),
+    SANJOSE("San Jose", "CALIFORNIA");
 
     private String city;
     private String state;
@@ -21,10 +22,18 @@ public enum Location {
 
     public static Location fromLocation(String loc){
         for(Location location:values()){
-            if(location.city.equals(loc)){
+            if(location.city.equalsIgnoreCase(loc)){
                 return location;
             }
         }
         return null;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
     }
 }

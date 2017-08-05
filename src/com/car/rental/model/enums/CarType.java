@@ -18,7 +18,7 @@ public enum CarType {
 
     public static CarType fromCarType(String car_type){
         for(CarType carType:values()){
-            if(carType.car_type.equals(car_type)){
+            if(carType.car_type.equalsIgnoreCase(car_type)){
                 return carType;
             }
         }

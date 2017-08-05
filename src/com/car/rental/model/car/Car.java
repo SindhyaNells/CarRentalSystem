@@ -1,5 +1,6 @@
 package com.car.rental.model.car;
 
+import com.car.rental.model.car.state.AvailableState;
 import com.car.rental.model.car.state.CarState;
 import com.car.rental.model.car.state.RentCar;
 import com.car.rental.model.enums.*;
@@ -21,7 +22,7 @@ public abstract class Car extends Vehicle implements RentCar {
     private CarState carState;
 
     public Car(){
-
+        carState=new AvailableState(this);
     }
 
     public Car(String vehicleColor, String registrationNumber, int passengerCapacity, Location location, CarType carType, CarMake carMake, FuelType fuelType, TransmissionType transmissionType,Owner owner,Float price){
@@ -79,12 +80,13 @@ public abstract class Car extends Vehicle implements RentCar {
 
     @Override
     public CarState getState() {
-        return null;
+        return carState;
     }
 
     @Override
     public void setState(CarState carState) {
 
+        this.carState=carState;
     }
 
 
