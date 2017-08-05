@@ -2,8 +2,17 @@ package com.car.rental;
 
 import com.car.rental.controller.car.CarController;
 import com.car.rental.controller.user.UserController;
+import com.car.rental.model.car.Car;
+import com.car.rental.model.car.CarList;
+import com.car.rental.model.car.carType.CoupeCar;
+import com.car.rental.model.car.carType.LuxuryCar;
+import com.car.rental.model.enums.*;
+import com.car.rental.model.user.Address;
+import com.car.rental.model.user.Owner;
 import com.car.rental.model.user.User;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -48,15 +57,6 @@ public class CarRentalTest {
                 continue;
             }
 
-            /*if (user_type == 1) {
-                listCar(user);
-            } else {
-                //TODO:rent car
-                //searchCar();
-                //sortCar();
-
-                rentCar();
-            }*/
         }while(1!=0);
 
 
@@ -92,6 +92,23 @@ public class CarRentalTest {
             System.out.println("Please enter a valid user name");
         }
 
+    }
+
+    public static void addCarDetails(){
+
+        CarController carController = CarController.getInstance();
+        Address address=new Address("141S","San Jose","12345");
+        Owner owner = new Owner(1,"Tom","sind@gmail.com","12345",address,"12345");
+
+        List<Car> carResultList=new ArrayList<>();
+        Car a = new CoupeCar("blue", "1234", 4, Location.LOSANGELES, CarType.COUPE, CarMake.AUDI, FuelType.ELECTRIC, TransmissionType.AUTOMATIC,owner,15.0f);
+        carResultList.add(a);
+        Car b = new LuxuryCar("red", "2345", 4, Location.DALLAS, CarType.LUXURY, CarMake.BMW, FuelType.ELECTRIC, TransmissionType.AUTOMATIC,owner,14f);
+        carResultList.add(b);
+        Car c = new LuxuryCar("black", "3456", 4, Location.NEWYORK, CarType.LUXURY, CarMake.BMW, FuelType.ELECTRIC, TransmissionType.AUTOMATIC,owner,20f);
+        carResultList.add(c);
+
+        carController.setCarList(new CarList(carResultList));
     }
 
     public static void rentCar(){

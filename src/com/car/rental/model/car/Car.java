@@ -21,6 +21,7 @@ public abstract class Car extends Vehicle implements RentCar {
     private TransmissionType transmissionType;
     private CarState carState;
 
+
     public Car(){
         carState=new AvailableState(this);
     }
@@ -55,7 +56,7 @@ public abstract class Car extends Vehicle implements RentCar {
 
     @Override
     public void requestCar(Car car) {
-
+        carState.requestCar(car);
     }
 
     @Override

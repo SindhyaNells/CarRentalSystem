@@ -40,7 +40,11 @@ public class AvailableState implements CarState {
 
     @Override
     public String rentCar(Car car) {
-        rentCar.setState(new RentedState(car));
-        return "The car rented";
+        return "The car is not requested";
+    }
+
+    @Override
+    public String returnCar(Car car) {
+        return "The car is not rented";
     }
 }

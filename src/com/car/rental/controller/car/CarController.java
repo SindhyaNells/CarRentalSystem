@@ -1,5 +1,8 @@
 package com.car.rental.controller.car;
 
+import com.car.rental.controller.payment.CreditCardStrategy;
+import com.car.rental.controller.payment.PayPalStrategy;
+import com.car.rental.controller.payment.PaymentController;
 import com.car.rental.model.car.*;
 import com.car.rental.model.car.carType.CoupeCar;
 import com.car.rental.model.car.carType.LuxuryCar;
@@ -117,7 +120,10 @@ public class CarController {
         scanner=new Scanner(System.in);
         int passengerCapacity=scanner.nextInt();
 
-        buildCar(color,regisNumber,passengerCapacity,location,carType,carMake,fuelType,transmissionType,(Owner) user,price);
+        Car car=buildCar(color,regisNumber,passengerCapacity,location,carType,carMake,fuelType,transmissionType,(Owner) user,price);
+
+        System.out.println(" CarType:"+car.getCarType()+" CarColor:"+car.getVehicleColor()+" CarMake:"+car.getCarMake()+" Price:"+car.getPrice()+" Location:"+car.getLocation());
+
 
         System.out.println("Your Car is listed successfully");
 
@@ -256,16 +262,48 @@ public class CarController {
             System.out.println("Parse exception");
         }
 
-        int numDays=(int)( (endDate.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24));
+        PaymentController paymentController=new PaymentController();
+        float total_amt=paymentController.calculateRent(startDate,endDate,car.getPrice());
 
-        Float totalAmountPayable=numDays*car.getPrice();
 
-
-        Rental rental=new Rental(startDate,endDate,(Renter)user,car,totalAmountPayable);
+        Rental rental=new Rental(startDate,endDate,(Renter)user,car,total_amt);
 
         car.getRentalList().add(rental);
 
-        System.out.println("Num of Days:"+numDays+" TotalAmount:"+totalAmountPayable);
+        System.out.println("Start Date:"+start_date+" End Date:"+end_date+" TotalAmount:"+total_amt);
+
+        System.out.println("Select the Payment method:");
+        System.out.println("1.CreditCard Method 2.Paypal Method");
+        scanner=new Scanner(System.in);
+        int option=scanner.nextInt();
+
+        if(option==1){
+
+            System.out.println("Enter the card number");
+            scanner=new Scanner(System.in);
+            String cardNum=scanner.nextLine();
+
+            System.out.println("Enter the cvv number");
+            scanner=new Scanner(System.in);
+            String cvvNum=scanner.nextLine();
+
+            System.out.println("Enter the expiry date");
+            scanner=new Scanner(System.in);
+            String date=scanner.nextLine();
+
+            paymentController.payRent(new CreditCardStrategy(date,cvvNum,date),total_amt);
+        }else if(option==2){
+
+            System.out.println("Enter the emailid:");
+            scanner=new Scanner(System.in);
+            String email=scanner.nextLine();
+
+            System.out.println("Enter the pwd:");
+            scanner=new Scanner(System.in);
+            String pwd=scanner.nextLine();
+
+            paymentController.payRent(new PayPalStrategy(email,pwd),total_amt);
+        }
 
         System.out.println("Car is booked successfully");
 

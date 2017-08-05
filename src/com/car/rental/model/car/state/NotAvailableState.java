@@ -38,4 +38,9 @@ public class NotAvailableState implements CarState {
     public String rentCar(Car car) {
         return "This car is not available for renting";
     }
+
+    @Override
+    public String returnCar(Car car) {
+        return "The car is not rented";
+    }
 }

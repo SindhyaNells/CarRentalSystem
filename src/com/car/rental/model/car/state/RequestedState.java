@@ -39,4 +39,9 @@ public class RequestedState implements CarState {
         rentCar.setState(new RentedState(car));
         return "The car is rented.";
     }
+
+    @Override
+    public String returnCar(Car car) {
+        return "The car is not rented";
+    }
 }

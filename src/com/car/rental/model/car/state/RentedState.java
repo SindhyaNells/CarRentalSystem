@@ -37,4 +37,10 @@ public class RentedState implements CarState {
     public String rentCar(Car car) {
         return "This car is rented already.";
     }
+
+    @Override
+    public String returnCar(Car car) {
+        rentCar.setState(new AvailableState(car));
+        return "The car is returned";
+    }
 }

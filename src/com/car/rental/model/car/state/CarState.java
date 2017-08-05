@@ -13,5 +13,6 @@ public interface CarState {
     public String activateCarListing(Car car);
     public String inactivateCarListing(Car car);
     public String rentCar(Car car);
+    public String returnCar(Car car);
 
 }
