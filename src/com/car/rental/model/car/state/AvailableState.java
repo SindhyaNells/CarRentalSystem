@@ -2,49 +2,50 @@ package com.car.rental.model.car.state;
 
 
 import com.car.rental.model.car.Car;
+import com.car.rental.model.car.Vehicle;
 
 /**
  * Created by sindhya on 7/31/17.
  */
 public class AvailableState implements CarState {
 
-    RentCar rentCar;
+    Vehicle rentCar;
 
-    public AvailableState(RentCar rentObj){
+    public AvailableState(Vehicle rentObj){
         this.rentCar=rentObj;
     }
 
     @Override
-    public String requestCar(Car car) {
+    public String requestCar() {
 
-        rentCar.setState(new RequestedState(car));
+        rentCar.setState(new RequestedState(rentCar));
         return "Car is requested";
     }
 
     @Override
-    public String denyCarRequest(Car car) {
+    public String denyCarRequest() {
         return "This car is not requested";
     }
 
     @Override
-    public String activateCarListing(Car car) {
+    public String activateCarListing() {
         return "This car is already in available state";
     }
 
     @Override
-    public String inactivateCarListing(Car car) {
+    public String inactivateCarListing() {
 
-        rentCar.setState(new NotAvailableState(car));
+        rentCar.setState(new NotAvailableState(rentCar));
         return "The car is inactivated";
     }
 
     @Override
-    public String rentCar(Car car) {
+    public String rentCar() {
         return "The car is not requested";
     }
 
     @Override
-    public String returnCar(Car car) {
+    public String returnCar() {
         return "The car is not rented";
     }
 }

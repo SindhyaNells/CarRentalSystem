@@ -1,5 +1,7 @@
 package com.car.rental.model.car;
 
+import com.car.rental.model.car.state.AvailableState;
+import com.car.rental.model.car.state.CarState;
 import com.car.rental.model.enums.CarColor;
 import com.car.rental.model.enums.Location;
 import com.car.rental.model.rent.Rental;
@@ -20,10 +22,11 @@ public class Vehicle {
     private Owner owner;
     private Float price;
     private ArrayList<Rental> rentalList;
+    private CarState carState;
 
 
     public Vehicle(){
-    	
+        carState=new AvailableState(this);
     }
 
 
@@ -34,6 +37,7 @@ public class Vehicle {
         this.location=location;
         this.owner=owner;
         this.price=price;
+        carState=new AvailableState(this);
         rentalList=new ArrayList<>();
     }
 
@@ -75,5 +79,14 @@ public class Vehicle {
 
     public void setRentalList(ArrayList<Rental> rentalList) {
         this.rentalList = rentalList;
+    }
+
+    public CarState getState() {
+        return carState;
+    }
+
+    public void setState(CarState carState) {
+
+        this.carState=carState;
     }
 }

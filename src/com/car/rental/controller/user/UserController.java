@@ -26,6 +26,10 @@ public class UserController {
         return userController;
     }
 
+    public void setUserList(ArrayList<User> userList) {
+        this.userList = userList;
+    }
+
     public ArrayList<User> getUserList() {
         return userList;
     }
@@ -60,10 +64,12 @@ public class UserController {
             user=new Owner(userList.size()+1,user_name,user_email,user_pwd,address,contact);
             user.getOwnerRating();
             userList.add(user);
+            System.out.println("User registered successfully");
 
         }else if(user_type==2){
             user=new Renter(userList.size()+1,user_name,user_email,user_pwd,address,contact);
             userList.add(user);
+            System.out.println("User registered successfully");
         }
         return user;
     }

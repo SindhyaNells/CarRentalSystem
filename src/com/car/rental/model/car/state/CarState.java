@@ -7,12 +7,12 @@ import com.car.rental.model.car.Car;
  */
 public interface CarState {
 
-    public String requestCar(Car car);
-    public String denyCarRequest(Car car);
-    //public String approveCarRequest(Car car);
-    public String activateCarListing(Car car);
-    public String inactivateCarListing(Car car);
-    public String rentCar(Car car);
-    public String returnCar(Car car);
+    public String requestCar();
+    public String denyCarRequest();
+    //public String approveCarRequest();
+    public String activateCarListing();
+    public String inactivateCarListing();
+    public String rentCar();
+    public String returnCar();
 
 }

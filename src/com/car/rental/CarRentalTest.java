@@ -25,12 +25,13 @@ public class CarRentalTest {
     public static void main(String args[]){
 
         System.out.println("Car Rental Management System");
+        addCarDetails();
 
         do {
             try{
 
                 System.out.println("Choose an option");
-                System.out.println("1.Create User 2.List Car 3.Search Car 4.Sort Car 5.Rent Car 6.Return Car 7.Exit");
+                System.out.println("1.Create User 2.List Car 3.View Car 4.Search Car 5.Sort Car 6.Rent Car 7.Return Car 8.Exit");
                 scanner=new Scanner(System.in);
                 int option=scanner.nextInt();
 
@@ -38,17 +39,19 @@ public class CarRentalTest {
                     registerUser();
                 }else if(option==2){
                     listCar();
-                }else if(option==3){
+                }else if(option == 3){
+                    viewCars();
+                }else if(option==4){
                     CarController carController = CarController.getInstance();
                     carController.searchCar();
-                }else if(option == 4){
+                }else if(option == 5){
                     CarController carController = CarController.getInstance();
                     carController.sortCars();
-                }else if(option == 5){
-                    rentCar();
                 }else if(option == 6){
-                    returnCar();
+                    rentCar();
                 }else if(option == 7){
+                    returnCar();
+                }else if(option == 8){
                     break;
                 }
 
@@ -94,19 +97,39 @@ public class CarRentalTest {
 
     }
 
+    public static void viewCars(){
+
+        System.out.println("Enter the username:");
+        scanner=new Scanner(System.in);
+        String user_name=scanner.nextLine();
+        UserController userController=UserController.getInstance();
+        CarController carController = CarController.getInstance();
+        if(userController.isValidUser(user_name)){
+            carController.displayCarsOfUser(user_name);
+        }else{
+            System.out.println("Please enter a valid user name");
+        }
+    }
+
     public static void addCarDetails(){
 
         CarController carController = CarController.getInstance();
         Address address=new Address("141S","San Jose","12345");
         Owner owner = new Owner(1,"Tom","sind@gmail.com","12345",address,"12345");
+        ArrayList<User> userArrayList=new ArrayList<>();
+        userArrayList.add(owner);
+        UserController userController=UserController.getInstance();
+        userController.setUserList(userArrayList);
 
         List<Car> carResultList=new ArrayList<>();
-        Car a = new CoupeCar("blue", "1234", 4, Location.LOSANGELES, CarType.COUPE, CarMake.AUDI, FuelType.ELECTRIC, TransmissionType.AUTOMATIC,owner,15.0f);
+        Car a = new CoupeCar("blue", "1234", 4, Location.SANJOSE, CarType.COUPE, CarMake.AUDI, FuelType.ELECTRIC, TransmissionType.AUTOMATIC,owner,15.0f);
         carResultList.add(a);
         Car b = new LuxuryCar("red", "2345", 4, Location.DALLAS, CarType.LUXURY, CarMake.BMW, FuelType.ELECTRIC, TransmissionType.AUTOMATIC,owner,14f);
         carResultList.add(b);
-        Car c = new LuxuryCar("black", "3456", 4, Location.NEWYORK, CarType.LUXURY, CarMake.BMW, FuelType.ELECTRIC, TransmissionType.AUTOMATIC,owner,20f);
+        Car c = new LuxuryCar("black", "3456", 4, Location.SANJOSE, CarType.LUXURY, CarMake.BMW, FuelType.ELECTRIC, TransmissionType.AUTOMATIC,owner,20f);
         carResultList.add(c);
+        Car d = new LuxuryCar("green", "3456", 4, Location.SANJOSE, CarType.LUXURY, CarMake.BMW, FuelType.ELECTRIC, TransmissionType.AUTOMATIC,owner,16f);
+        carResultList.add(d);
 
         carController.setCarList(new CarList(carResultList));
     }

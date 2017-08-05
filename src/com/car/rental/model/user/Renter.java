@@ -1,5 +1,8 @@
 package com.car.rental.model.user;
 
+import com.car.rental.controller.Observer.CarIssueObserver;
+import com.car.rental.model.car.Car;
+
 import java.util.ArrayList;
 
 /**
@@ -25,11 +28,21 @@ public class Renter extends User{
         this.renterRating = renterRating;
     }
 
+    public void attach(CarIssueObserver observer){
+        addObserver(observer);
+    }
+
     public ArrayList<String> getRenterComments() {
         return renterComments;
     }
 
     public void setRenterComments(ArrayList<String> renterComments) {
         this.renterComments = renterComments;
+    }
+
+
+    public void setIssue(String issue) {
+        setChanged();
+        notifyObservers(issue);
     }
 }

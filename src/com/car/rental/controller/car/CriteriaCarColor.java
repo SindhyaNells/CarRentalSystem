@@ -20,9 +20,9 @@ public class CriteriaCarColor implements CarSearchCriteria {
     public List<Car> meetCriteria(List<Car> carList) {
         List<Car> carResultList=new ArrayList<>();
 
-
-
-        for(Car car: carList){
+        Iterator<Car> carIterator=carList.iterator();
+        while(carIterator.hasNext()){
+            Car car=carIterator.next();
             if(car.getVehicleColor().equalsIgnoreCase(carColor)){
                 carResultList.add(car);
             }
@@ -30,23 +30,4 @@ public class CriteriaCarColor implements CarSearchCriteria {
         return carResultList;
     }
 
-    public class CriteriaIterator implements Iterator{
-
-        @Override
-        public boolean hasNext() {
-        // TODO Auto-generated method stub
-            System.out.println("");
-            return false;
-        }
-
-        @Override
-        public Object next() {
-        // TODO Auto-generated method stub
-            return null;
-        }
-
-
-
-
-    }
 }

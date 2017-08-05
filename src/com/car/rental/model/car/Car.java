@@ -1,29 +1,23 @@
 package com.car.rental.model.car;
 
-import com.car.rental.model.car.state.AvailableState;
-import com.car.rental.model.car.state.CarState;
-import com.car.rental.model.car.state.RentCar;
 import com.car.rental.model.enums.*;
 import com.car.rental.model.enums.Location;
 import com.car.rental.model.user.Owner;
 
-import java.util.Iterator;
-
 /**
  * Created by sindhya on 7/28/17.
  */
-public abstract class Car extends Vehicle implements RentCar {
+public abstract class Car extends Vehicle {
 
 
     private CarMake carMake;
     private CarType carType;
     private FuelType fuelType;
     private TransmissionType transmissionType;
-    private CarState carState;
 
 
     public Car(){
-        carState=new AvailableState(this);
+        super();
     }
 
     public Car(String vehicleColor, String registrationNumber, int passengerCapacity, Location location, CarType carType, CarMake carMake, FuelType fuelType, TransmissionType transmissionType,Owner owner,Float price){
@@ -54,41 +48,6 @@ public abstract class Car extends Vehicle implements RentCar {
         this.carMake = carMake;
     }
 
-    @Override
-    public void requestCar(Car car) {
-        carState.requestCar(car);
-    }
-
-    @Override
-    public void denyCarRequest(Car car) {
-
-    }
-
-    @Override
-    public void activateCarListing(Car car) {
-
-    }
-
-    @Override
-    public void inactivateCarListing(Car car) {
-
-    }
-
-    @Override
-    public void rentCar(Car car) {
-
-    }
-
-    @Override
-    public CarState getState() {
-        return carState;
-    }
-
-    @Override
-    public void setState(CarState carState) {
-
-        this.carState=carState;
-    }
 
 
 }

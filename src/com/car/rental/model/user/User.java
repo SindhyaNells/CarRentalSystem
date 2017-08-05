@@ -1,9 +1,13 @@
 package com.car.rental.model.user;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Observable;
+
 /**
  * Created by sindhya on 7/30/17.
  */
-public abstract class User {
+public abstract class User extends Observable{
 
 
     private int userId;
@@ -13,6 +17,7 @@ public abstract class User {
     private String emailId;
     private String password;
     private Address address;
+    private List<String> notifications;
 
     public User(int user_id,String user_name,String user_email,String user_password,Address user_address,String contact_num){
 
@@ -22,6 +27,7 @@ public abstract class User {
         this.password=user_password;
         this.address=user_address;
         this.contactNumber=contact_num;
+        this.notifications = new ArrayList<>();
     }
 
     public Float getOwnerRating() {
@@ -75,5 +81,19 @@ public abstract class User {
 
     public void setAddress(Address address) {
         this.address = address;
+    }
+
+    public List<String> getNotifications() {
+        return notifications;
+    }
+
+    public void setNotifications(List<String> notifications) {
+        this.notifications = notifications;
+    }
+
+    public void notify(String issue) {
+        notifications.add(issue);
+        System.out.print(this.userName + " notification:");
+        System.out.println(issue);
     }
 }

@@ -1,5 +1,6 @@
 package com.car.rental.controller.car;
 
+import com.car.rental.controller.Observer.CarIssueObserver;
 import com.car.rental.controller.payment.CreditCardStrategy;
 import com.car.rental.controller.payment.PayPalStrategy;
 import com.car.rental.controller.payment.PaymentController;
@@ -17,10 +18,7 @@ import com.car.rental.model.user.User;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 /**
  * Created by sindhya on 8/2/17.
@@ -132,7 +130,7 @@ public class CarController {
     public void displayCar(List<Car> carList){
 
         for(Car car:carList)
-            System.out.println("User:"+car.getOwner().getUserName() +" CarLocation:"+car.getLocation()+" Color: "+car.getVehicleColor()+" CarMake: "+car.getCarMake()+" CarType:"+car.getCarType());
+            System.out.println("User:"+car.getOwner().getUserName() +" CarLocation:"+car.getLocation()+" Color: "+car.getVehicleColor()+" CarMake: "+car.getCarMake()+" CarType:"+car.getCarType()+" Price:"+car.getPrice());
     }
 
     public List<Car> sortingStrategy(SortingStrategy sortingStrategy){
@@ -193,12 +191,20 @@ public class CarController {
 
     }
 
+    public List<Car> filterCarByAvailability(){
+        System.out.println("Filtering cars by availability");
+        List<Car> carResultList=new ArrayList<>();
+        CriteriaBase baseCriteria = new CriteriaBase();
+        carResultList = baseCriteria.meetCriteria(carList.getCarList());
+        return carResultList;
+    }
+
     public List<Car> searchByCarType(String carType){
 
         System.out.println("Searching by Car Type");
         List<Car> carResultList=new ArrayList<>();
         CriteriaCarType carTypeCriteria = new CriteriaCarType(carType);
-        carResultList = carTypeCriteria.meetCriteria(carList.getCarList());
+        carResultList = carTypeCriteria.meetCriteria(filterCarByAvailability());
         return carResultList;
     }
 
@@ -207,7 +213,7 @@ public class CarController {
         System.out.println("Searching by Car Make");
         List<Car> carResultList=new ArrayList<>();
         CriteriaCarMake carMakeCriteria=new CriteriaCarMake(carMake);
-        carResultList = carMakeCriteria.meetCriteria(carList.getCarList());
+        carResultList = carMakeCriteria.meetCriteria(filterCarByAvailability());
         return carResultList;
     }
 
@@ -216,8 +222,19 @@ public class CarController {
         System.out.println("Searching by Car Color");
         List<Car> carResultList=new ArrayList<>();
         CriteriaCarColor carColorCriteria=new CriteriaCarColor(carColor);
-        carResultList=carColorCriteria.meetCriteria(carList.getCarList());
+        carResultList=carColorCriteria.meetCriteria(filterCarByAvailability());
         return carResultList;
+    }
+
+    public void displayCarsOfUser(String user_name){
+
+        Iterator<Car> carIterator=carList.iterator();
+        while(carIterator.hasNext()){
+            Car car=carIterator.next();
+            if(car.getOwner().getUserName().equals(user_name)){
+                System.out.println(" CarType:"+car.getCarType()+" CarColor:"+car.getVehicleColor()+" CarMake:"+car.getCarMake()+" Amount:"+car.getPrice()+" Location:"+car.getLocation()+" Amount:"+car.getPrice());
+            }
+        }
     }
 
     public void rentCar(User user){
@@ -226,17 +243,17 @@ public class CarController {
         System.out.println("Rent Car");
 
         CriteriaLocation criteriaLocation=new CriteriaLocation(user.getAddress().getCity());
-        List<Car> carResultList=criteriaLocation.meetCriteria(carList.getCarList());
+        List<Car> carResultList=criteriaLocation.meetCriteria(filterCarByAvailability());
 
         for(int i=0;i<carResultList.size();i++){
-            System.out.println(i+" CarType:"+carList.getCarList().get(i).getCarType()+" CarColor:"+carList.getCarList().get(i).getVehicleColor()+" CarMake:"+carList.getCarList().get(i).getCarMake()+" Price:"+carList.getCarList().get(i).getPrice()+" Location:"+carList.getCarList().get(i).getLocation());
+            System.out.println(i+" CarType:"+carResultList.get(i).getCarType()+" CarColor:"+carResultList.get(i).getVehicleColor()+" CarMake:"+carResultList.get(i).getCarMake()+" Amount:"+carResultList.get(i).getPrice()+" Location:"+carResultList.get(i).getLocation());
         }
 
         System.out.println("Select car:");
         scanner=new Scanner(System.in);
         int car_id=scanner.nextInt();
 
-        Vehicle car= (Vehicle) carList.getCarList().get(car_id);
+        Vehicle car= (Vehicle) carResultList.get(car_id);
 
         SimpleDateFormat format=new SimpleDateFormat("dd-MM-yyyy");
 
@@ -305,7 +322,20 @@ public class CarController {
             paymentController.payRent(new PayPalStrategy(email,pwd),total_amt);
         }
 
+        System.out.println(car.getState().requestCar());
+        System.out.println(car.getState().rentCar());
+        new CarIssueObserver((Renter) user, (Car)car);
+
+
         System.out.println("Car is booked successfully");
+        System.out.println("Issues with car? - Y/N");
+        String issue=scanner.nextLine();
+        if (issue.equals("Y")){
+            System.out.println("Describe issue:");
+            String issueDesc=scanner.nextLine();
+            ((Renter) user).setIssue(issueDesc);
+        }
+
 
     }
 
