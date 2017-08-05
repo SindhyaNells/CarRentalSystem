@@ -15,6 +15,15 @@ public class Rental {
     Vehicle vehicle;
     private float totalAmountPayable;
 
+    public Rental(Date startDate,Date endDate,Renter renter,Vehicle vehicle,float totalAmountPayable){
+        this.startDate=startDate;
+        this.endDate=endDate;
+        this.renter=renter;
+        this.vehicle=vehicle;
+        this.totalAmountPayable=totalAmountPayable;
+
+    }
+
     public Date getStartDate() {
         return startDate;
     }

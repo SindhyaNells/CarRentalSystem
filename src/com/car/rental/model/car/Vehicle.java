@@ -19,7 +19,7 @@ public class Vehicle {
     private Location location;
     private Owner owner;
     private Float price;
-    private ArrayList<Rental> rentals;
+    private ArrayList<Rental> rentalList;
 
 
     public Vehicle(){
@@ -66,5 +66,13 @@ public class Vehicle {
 
     public void setPrice(Float price) {
         this.price = price;
+    }
+
+    public ArrayList<Rental> getRentalList() {
+        return rentalList;
+    }
+
+    public void setRentalList(ArrayList<Rental> rentalList) {
+        this.rentalList = rentalList;
     }
 }

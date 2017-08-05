@@ -1,4 +1,4 @@
-package com.car.rental.controller.search;
+package com.car.rental.controller.car;
 
 import com.car.rental.model.car.Car;
 

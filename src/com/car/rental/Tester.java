@@ -1,6 +1,6 @@
 package com.car.rental;
 
-import com.car.rental.controller.CarController;
+import com.car.rental.controller.car.CarController;
 import com.car.rental.model.car.Car;
 import com.car.rental.model.car.CarList;
 import com.car.rental.model.car.carType.CoupeCar;
@@ -21,7 +21,7 @@ public class Tester {
     private static Scanner scanner;
 
     public static void main(String args[]){
-        CarController carController=new CarController();
+        CarController carController = CarController.getInstance();
 
 
         Address address=new Address("we","ca","12345");
@@ -32,16 +32,17 @@ public class Tester {
         Owner owner2 = new Owner(3,"surya","sind@gmail.com","12345",address,"12345");
 
         List<Car> carResultList=new ArrayList<>();
-        Car a = new CoupeCar(CarColor.BLUE, "ssgas", 4, Location.LOSANGELES, CarType.COUPE, CarMake.AUDI, FuelType.ELECTRIC, TransmissionType.AUTOMATIC,owner,10.0f);
+        Car a = new CoupeCar("blue", "ssgas", 4, Location.LOSANGELES, CarType.COUPE, CarMake.AUDI, FuelType.ELECTRIC, TransmissionType.AUTOMATIC,owner,15.0f);
         carResultList.add(a);
-        Car b = new LuxuryCar(CarColor.RED, "ssgas", 4, Location.DALLAS, CarType.LUXURY, CarMake.BMW, FuelType.ELECTRIC, TransmissionType.AUTOMATIC,owner1,12f);
+        Car b = new LuxuryCar("red", "ssgas", 4, Location.DALLAS, CarType.LUXURY, CarMake.BMW, FuelType.ELECTRIC, TransmissionType.AUTOMATIC,owner1,14f);
         carResultList.add(b);
-        Car c = new LuxuryCar(CarColor.BLACK, "ssgas", 4, Location.NEWYORK, CarType.LUXURY, CarMake.BMW, FuelType.ELECTRIC, TransmissionType.AUTOMATIC,owner2,12f);
+        Car c = new LuxuryCar("black", "ssgas", 4, Location.NEWYORK, CarType.LUXURY, CarMake.BMW, FuelType.ELECTRIC, TransmissionType.AUTOMATIC,owner2,20f);
         carResultList.add(c);
 
         carController.setCarList(new CarList(carResultList));
 
-        carController.searchCar();
+        //carController.searchCar();
+        carController.sortCars();
     }
 
 }

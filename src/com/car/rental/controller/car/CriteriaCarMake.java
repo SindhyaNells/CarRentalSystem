@@ -1,4 +1,4 @@
-package com.car.rental.controller.search;
+package com.car.rental.controller.car;
 
 import com.car.rental.model.car.Car;
 
@@ -6,14 +6,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by sindhya on 8/1/17.
+ * Created by sindhya on 8/2/17.
  */
-public class CriteriaCarType implements CarSearchCriteria {
+public class CriteriaCarMake implements CarSearchCriteria {
 
-    private String carType;
+    private String carMake;
 
-    public CriteriaCarType(String carType){
-        this.carType=carType;
+    public CriteriaCarMake(String carMake){
+        this.carMake=carMake;
     }
 
     @Override
@@ -21,11 +21,10 @@ public class CriteriaCarType implements CarSearchCriteria {
         List<Car> carResultList=new ArrayList<>();
 
         for(Car car: carList){
-            if(car.getCarType().name().equalsIgnoreCase(carType)){
+            if(car.getCarMake().name().equalsIgnoreCase(carMake)){
                 carResultList.add(car);
             }
         }
         return carResultList;
     }
-
 }

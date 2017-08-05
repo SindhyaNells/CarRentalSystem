@@ -1,4 +1,4 @@
-package com.car.rental.controller;
+package com.car.rental.controller.user;
 
 import com.car.rental.model.user.Address;
 import com.car.rental.model.user.Owner;
@@ -16,6 +16,15 @@ public class UserController {
 
     private static Scanner scanner;
     private ArrayList<User> userList=new ArrayList<>();
+    private static UserController userController = new UserController();
+
+    private UserController() {
+
+    }
+
+    public static UserController getInstance() {
+        return userController;
+    }
 
     public ArrayList<User> getUserList() {
         return userList;

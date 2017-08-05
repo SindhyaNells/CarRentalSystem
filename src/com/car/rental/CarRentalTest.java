@@ -1,14 +1,9 @@
 package com.car.rental;
 
-import com.car.rental.controller.CarController;
-import com.car.rental.controller.UserController;
-import com.car.rental.controller.sort.PriceSortingStrategy;
-import com.car.rental.controller.sort.RateSortingStrategy;
-import com.car.rental.model.car.Car;
-import com.car.rental.model.car.Vehicle;
+import com.car.rental.controller.car.CarController;
+import com.car.rental.controller.user.UserController;
 import com.car.rental.model.user.User;
 
-import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -26,7 +21,7 @@ public class CarRentalTest {
             try{
 
                 System.out.println("Choose an option");
-                System.out.println("1.Create User 2.List Car 3.Search Car 4.Sort Car 5.Rent Car 6.Return Car");
+                System.out.println("1.Create User 2.List Car 3.Search Car 4.Sort Car 5.Rent Car 6.Return Car 7.Exit");
                 scanner=new Scanner(System.in);
                 int option=scanner.nextInt();
 
@@ -35,14 +30,17 @@ public class CarRentalTest {
                 }else if(option==2){
                     listCar();
                 }else if(option==3){
-                    CarController carController=new CarController();
+                    CarController carController = CarController.getInstance();
                     carController.searchCar();
                 }else if(option == 4){
-                    CarController carController=new CarController();
+                    CarController carController = CarController.getInstance();
                     carController.sortCars();
                 }else if(option == 5){
-                    CarController carController=new CarController();
-
+                    rentCar();
+                }else if(option == 6){
+                    returnCar();
+                }else if(option == 7){
+                    break;
                 }
 
 
@@ -72,7 +70,7 @@ public class CarRentalTest {
         scanner=new Scanner(System.in);
         int user_type = scanner.nextInt();
 
-        UserController userController=new UserController();
+        UserController userController=UserController.getInstance();
 
         User user=userController.register(user_type);
 
@@ -82,11 +80,11 @@ public class CarRentalTest {
     private static void listCar(){
 
 
-        System.out.println("Enter the username");
+        System.out.println("Enter the username:");
         scanner=new Scanner(System.in);
         String user_name=scanner.nextLine();
-        UserController userController=new UserController();
-        CarController carController=new CarController();
+        UserController userController=UserController.getInstance();
+        CarController carController = CarController.getInstance();
         if(userController.isValidUser(user_name)){
             User user=userController.getUserByUserName(user_name);
             carController.addCar(user);
@@ -98,23 +96,22 @@ public class CarRentalTest {
 
     public static void rentCar(){
 
-        System.out.println("Rent Car");
-
-        CarController carController=new CarController();
-
-        List<Car> carList=carController.getCarList().getCarList();
-
-        for(int i=0;i<carList.size();i++){
-            System.out.println(i+" CarType:"+carList.get(i).getCarType()+" CarColor:"+carList.get(i).getVehicleColor()+" CarMake:"+carList.get(i).getCarMake()+" Price:"+carList.get(i).getPrice()+" Location:"+carList.get(i).getLocation());
+        System.out.println("Enter the username:");
+        scanner=new Scanner(System.in);
+        String user_name=scanner.nextLine();
+        UserController userController=UserController.getInstance();
+        CarController carController = CarController.getInstance();
+        if(userController.isValidUser(user_name)){
+            User user=userController.getUserByUserName(user_name);
+            carController.rentCar(user);
+        }else{
+            System.out.println("Please enter a valid user name");
         }
 
-        System.out.println("Select car:");
-        scanner=new Scanner(System.in);
-        int car_id=scanner.nextInt();
+    }
 
-        Vehicle car= (Vehicle) carList.get(car_id);
-
-
+    public static void returnCar(){
+        System.out.println("Return car");
 
     }
 }
