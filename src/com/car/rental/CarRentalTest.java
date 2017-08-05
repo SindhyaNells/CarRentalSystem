@@ -5,6 +5,7 @@ import com.car.rental.controller.UserController;
 import com.car.rental.controller.sort.PriceSortingStrategy;
 import com.car.rental.controller.sort.RateSortingStrategy;
 import com.car.rental.model.car.Car;
+import com.car.rental.model.car.Vehicle;
 import com.car.rental.model.user.User;
 
 import java.util.List;
@@ -106,6 +107,14 @@ public class CarRentalTest {
         for(int i=0;i<carList.size();i++){
             System.out.println(i+" CarType:"+carList.get(i).getCarType()+" CarColor:"+carList.get(i).getVehicleColor()+" CarMake:"+carList.get(i).getCarMake()+" Price:"+carList.get(i).getPrice()+" Location:"+carList.get(i).getLocation());
         }
+
+        System.out.println("Select car:");
+        scanner=new Scanner(System.in);
+        int car_id=scanner.nextInt();
+
+        Vehicle car= (Vehicle) carList.get(car_id);
+
+
 
     }
 }

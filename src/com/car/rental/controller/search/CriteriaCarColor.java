@@ -20,6 +20,8 @@ public class CriteriaCarColor implements CarSearchCriteria {
     public List<Car> meetCriteria(List<Car> carList) {
         List<Car> carResultList=new ArrayList<>();
 
+
+
         for(Car car: carList){
             if(car.getVehicleColor().equalsIgnoreCase(carColor)){
                 carResultList.add(car);

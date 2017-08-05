@@ -6,6 +6,8 @@ import com.car.rental.model.enums.*;
 import com.car.rental.model.enums.Location;
 import com.car.rental.model.user.Owner;
 
+import java.util.Iterator;
+
 /**
  * Created by sindhya on 7/28/17.
  */
@@ -84,4 +86,6 @@ public abstract class Car extends Vehicle implements RentCar {
     public void setState(CarState carState) {
 
     }
+
+
 }
