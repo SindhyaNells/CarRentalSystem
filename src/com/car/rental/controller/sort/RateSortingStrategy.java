@@ -10,15 +10,17 @@ import java.util.List;
 /**
  * Created by sindhya on 8/3/17.
  */
-public class SortByPrice implements SortingStrategy {
+public class RateSortingStrategy implements SortingStrategy {
+
 
     @Override
     public List<Car> sortCar(List<Car> carList) {
+
         List<Car> carResultList=new ArrayList<>();
 
         if(carList.size()!=0) {
 
-            Collections.sort(carList,(c1, c2)->Float.compare(c1.getPrice() ,c2.getPrice()));
+            Collections.sort(carList,(c1,c2)->Double.compare(c1.getOwner().getOwnerRating() ,c2.getOwner().getOwnerRating()));
         }
 
         return carResultList;

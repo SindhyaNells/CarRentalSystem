@@ -21,7 +21,7 @@ public class CriteriaCarColor implements CarSearchCriteria {
         List<Car> carResultList=new ArrayList<>();
 
         for(Car car: carList){
-            if(car.getVehicleColor().name().equalsIgnoreCase(carColor)){
+            if(car.getVehicleColor().equalsIgnoreCase(carColor)){
                 carResultList.add(car);
             }
         }

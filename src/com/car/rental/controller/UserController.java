@@ -59,6 +59,29 @@ public class UserController {
         return user;
     }
 
+    public boolean isValidUser(String user_name){
+
+        for(User user:userList){
+            if(user.getUserName().equals(user_name)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public User getUserByUserName(String user_name){
+
+        for(User user:userList){
+
+            if(user.getUserName().equals(user_name)) {
+                return user;
+            }
+
+        }
+
+        return null;
+    }
+
 
 //    public User loginUser(String user_email,String password){
 //

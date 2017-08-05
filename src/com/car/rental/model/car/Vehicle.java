@@ -2,6 +2,7 @@ package com.car.rental.model.car;
 
 import com.car.rental.model.enums.CarColor;
 import com.car.rental.model.enums.Location;
+import com.car.rental.model.rent.Rental;
 import com.car.rental.model.user.Owner;
 
 import java.util.ArrayList;
@@ -11,13 +12,14 @@ import java.util.ArrayList;
  */
 public class Vehicle {
 
-    private CarColor vehicleColor;
+    private String vehicleColor;
     private String registrationNumber;
     private int passengerCapacity;
-    private ArrayList<Policy> policy;
+    private ArrayList<Policy> policies;
     private Location location;
     private Owner owner;
     private Float price;
+    private ArrayList<Rental> rentals;
 
 
     public Vehicle(){
@@ -25,7 +27,7 @@ public class Vehicle {
     }
 
 
-    public Vehicle(CarColor vehicleColor,String registrationNumber,int passengerCapacity,Location location,Owner owner,Float price){
+    public Vehicle(String vehicleColor,String registrationNumber,int passengerCapacity,Location location,Owner owner,Float price){
         this.vehicleColor=vehicleColor;
         this.registrationNumber=registrationNumber;
         this.passengerCapacity=passengerCapacity;
@@ -34,11 +36,11 @@ public class Vehicle {
         this.price=price;
     }
 
-    public CarColor getVehicleColor() {
+    public String getVehicleColor() {
         return vehicleColor;
     }
 
-    public void setVehicleColor(CarColor vehicleColor) {
+    public void setVehicleColor(String vehicleColor) {
         this.vehicleColor = vehicleColor;
     }
 

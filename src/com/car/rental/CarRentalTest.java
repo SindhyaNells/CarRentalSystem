@@ -2,19 +2,11 @@ package com.car.rental;
 
 import com.car.rental.controller.CarController;
 import com.car.rental.controller.UserController;
-import com.car.rental.controller.search.CriteriaCarColor;
-import com.car.rental.controller.search.CriteriaCarMake;
-import com.car.rental.controller.search.CriteriaCarType;
-import com.car.rental.controller.sort.SortByPrice;
-import com.car.rental.controller.sort.SortByRating;
+import com.car.rental.controller.sort.PriceSortingStrategy;
+import com.car.rental.controller.sort.RateSortingStrategy;
 import com.car.rental.model.car.Car;
-import com.car.rental.model.car.InsurancePolicy;
-import com.car.rental.model.user.Address;
-import com.car.rental.model.user.Owner;
 import com.car.rental.model.user.User;
 
-import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -28,30 +20,33 @@ public class CarRentalTest {
     public static void main(String args[]){
 
         System.out.println("Car Rental Management System");
-        System.out.println("Select option:");
-        /*System.out.println("1.Login 2.Register");
-        scanner=new Scanner(System.in);
-        if(scanner.nextInt()==1){
-
-        }*/
 
         do {
+            try{
 
-            System.out.println("Choose User");
-            System.out.println("1.Owner 2.Renter");
-            scanner=new Scanner(System.in);
-            int user_type = scanner.nextInt();
+                System.out.println("Choose an option");
+                System.out.println("1.Create User 2.List Car 3.Search Car 4.Sort Car 5.Rent Car 6.Return Car");
+                scanner=new Scanner(System.in);
+                int option=scanner.nextInt();
 
-            System.out.println("Choose operation");
-            System.out.println("1.Register 2.Login ");
-            scanner = new Scanner(System.in);
-            int option=scanner.nextInt();
+                if(option==1){
+                    registerUser();
+                }else if(option==2){
+                    listCar();
+                }else if(option==3){
+                    CarController carController=new CarController();
+                    carController.searchCar();
+                }else if(option == 4){
+                    CarController carController=new CarController();
+                    carController.sortCars();
+                }else if(option == 5){
+                    CarController carController=new CarController();
 
-            if(option==1) {
-                registerUser(user_type);
-            }else if(user_type==2) {
+                }
 
-                break;
+
+            } catch(Exception e) {
+                continue;
             }
 
             /*if (user_type == 1) {
@@ -69,7 +64,13 @@ public class CarRentalTest {
 
     }
 
-    private static User registerUser(int user_type){
+    private static User registerUser(){
+
+        System.out.println("Choose User");
+        System.out.println("1.Owner 2.Renter");
+        scanner=new Scanner(System.in);
+        int user_type = scanner.nextInt();
+
         UserController userController=new UserController();
 
         User user=userController.register(user_type);
@@ -77,64 +78,19 @@ public class CarRentalTest {
         return user;
     }
 
-    private static void listCar(User user){
-        System.out.println("List you car");
+    private static void listCar(){
 
-        System.out.println("Enter the location(city):");
+
+        System.out.println("Enter the username");
         scanner=new Scanner(System.in);
-        String location=scanner.nextLine();
-
-        System.out.println("Enter the Car Type (Luxury,Sedan,SUV,Coupe):");
-        scanner=new Scanner(System.in);
-        String carType=scanner.nextLine();
-
-        System.out.println("Enter the Car Make (Audi,Fiat,Nissan,Honda):");
-        scanner=new Scanner(System.in);
-        String carMake=scanner.nextLine();
-
-        System.out.println("Enter the Fuel Type (Electric,Gas):");
-        scanner=new Scanner(System.in);
-        String fuelType=scanner.nextLine();
-
-        System.out.println("Enter the Transmission Type (Automatic,Manual)");
-        scanner=new Scanner(System.in);
-        String transmissionType=scanner.nextLine();
-
-        System.out.println("Enter the price");
-        scanner=new Scanner(System.in);
-        Float price=scanner.nextFloat();
-
-        System.out.println("Enter the car color:");
-        scanner=new Scanner(System.in);
-        String color=scanner.nextLine();
-
-        System.out.println("Enter the registation number:");
-        scanner=new Scanner(System.in);
-        String regisNumber=scanner.nextLine();
-
-        System.out.println("Enter the passenger capacity:");
-        scanner=new Scanner(System.in);
-        int passengerCapacity=scanner.nextInt();
-
-
+        String user_name=scanner.nextLine();
+        UserController userController=new UserController();
         CarController carController=new CarController();
-        carController.buildCar(color,regisNumber,passengerCapacity,location,carType,carMake,fuelType,transmissionType,(Owner) user,price);
-
-    }
-
-
-    private static void sortCar() {
-
-        CarController carController=new CarController();
-        System.out.println("Sort Cars");
-        System.out.println("Sort By 1.Owner Rating 2.Price");
-        scanner=new Scanner(System.in);
-        int sortOption=scanner.nextInt();
-
-        if(sortOption==1){
-            carController.displayCar(carController.sortCars(new SortByRating()));
-        }else if(sortOption==2){
-            carController.displayCar(carController.sortCars(new SortByPrice()));
+        if(userController.isValidUser(user_name)){
+            User user=userController.getUserByUserName(user_name);
+            carController.addCar(user);
+        }else{
+            System.out.println("Please enter a valid user name");
         }
 
     }

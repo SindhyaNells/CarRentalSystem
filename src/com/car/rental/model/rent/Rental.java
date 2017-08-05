@@ -1,5 +1,8 @@
 package com.car.rental.model.rent;
 
+import com.car.rental.model.car.Vehicle;
+import com.car.rental.model.user.Renter;
+
 import java.util.Date;
 
 /**
@@ -8,6 +11,8 @@ import java.util.Date;
 public class Rental {
     private Date startDate;
     public Date endDate;
+    Renter renter;
+    Vehicle vehicle;
     private float totalAmountPayable;
 
     public Date getStartDate() {
