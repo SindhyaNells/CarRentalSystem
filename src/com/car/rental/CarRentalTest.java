@@ -2,11 +2,7 @@ package com.car.rental;
 
 import com.car.rental.controller.car.CarController;
 import com.car.rental.controller.user.UserController;
-import com.car.rental.model.car.Car;
-import com.car.rental.model.car.CarList;
-import com.car.rental.model.car.carType.CoupeCar;
-import com.car.rental.model.car.carType.LuxuryCar;
-import com.car.rental.model.enums.*;
+import com.car.rental.model.car.*;
 import com.car.rental.model.user.Address;
 import com.car.rental.model.user.Owner;
 import com.car.rental.model.user.User;
@@ -25,13 +21,20 @@ public class CarRentalTest {
     public static void main(String args[]){
 
         System.out.println("Car Rental Management System");
-        addCarDetails();
+        addSampleCarDetails();
 
         do {
             try{
 
-                System.out.println("Choose an option");
-                System.out.println("1.Create User 2.List Car 3.View Car 4.Search Car 5.Sort Car 6.Rent Car 7.Return Car 8.Exit");
+
+                System.out.println("*******************************");
+                System.out.println("1.Create User");
+                System.out.println("--Owner--");
+                System.out.println("2.List Car \n3.View Cars");
+                System.out.println("--Renter--");
+                System.out.println("4.Search Car \n5.Sort Car \n6.Rent Car \n7.Return Car");
+                System.out.println("-8.Exit-");
+                System.out.println("Enter the option:");
                 scanner=new Scanner(System.in);
                 int option=scanner.nextInt();
 
@@ -111,7 +114,7 @@ public class CarRentalTest {
         }
     }
 
-    public static void addCarDetails(){
+    public static void addSampleCarDetails(){
 
         CarController carController = CarController.getInstance();
         Address address=new Address("141S","San Jose","12345");
@@ -153,5 +156,16 @@ public class CarRentalTest {
     public static void returnCar(){
         System.out.println("Return car");
 
+        System.out.println("Enter the username:");
+        scanner=new Scanner(System.in);
+        String user_name=scanner.nextLine();
+        UserController userController=UserController.getInstance();
+        CarController carController = CarController.getInstance();
+        if(userController.isValidUser(user_name)){
+            User user=userController.getUserByUserName(user_name);
+            carController.returnCar(user);
+        }else{
+            System.out.println("Please enter a valid user name");
+        }
     }
 }

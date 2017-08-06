@@ -47,4 +47,20 @@ public class Rental {
     public void setTotalAmountPayable(float totalAmountPayable) {
         this.totalAmountPayable = totalAmountPayable;
     }
+
+    public Vehicle getVehicle() {
+        return vehicle;
+    }
+
+    public void setVehicle(Vehicle vehicle) {
+        this.vehicle = vehicle;
+    }
+
+    public Renter getRenter() {
+        return renter;
+    }
+
+    public void setRenter(Renter renter) {
+        this.renter = renter;
+    }
 }

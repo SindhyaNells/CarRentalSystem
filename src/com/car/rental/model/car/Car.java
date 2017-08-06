@@ -1,13 +1,11 @@
 package com.car.rental.model.car;
 
-import com.car.rental.model.enums.*;
-import com.car.rental.model.enums.Location;
 import com.car.rental.model.user.Owner;
 
 /**
  * Created by sindhya on 7/28/17.
  */
-public abstract class Car extends Vehicle {
+public class Car extends Vehicle {
 
 
     private CarMake carMake;
@@ -26,10 +24,6 @@ public abstract class Car extends Vehicle {
         this.carMake=carMake;
         this.fuelType=fuelType;
         this.transmissionType=transmissionType;
-    }
-    
-    public void upgrade(){
-    	
     }
 
     public CarType getCarType() {

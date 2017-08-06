@@ -1,8 +1,5 @@
-package com.car.rental.model.car.carType;
+package com.car.rental.model.car;
 
-import com.car.rental.model.car.*;
-import com.car.rental.model.enums.*;
-import com.car.rental.model.enums.Location;
 import com.car.rental.model.user.Owner;
 
 /**

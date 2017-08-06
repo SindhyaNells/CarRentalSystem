@@ -1,8 +1,7 @@
 package com.car.rental.controller.car;
 
 import com.car.rental.model.car.Car;
-import com.car.rental.model.car.state.AvailableState;
-import com.car.rental.model.car.state.CarState;
+import com.car.rental.model.car.AvailableState;
 
 import java.util.ArrayList;
 import java.util.Iterator;

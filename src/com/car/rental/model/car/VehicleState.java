@@ -1,11 +1,11 @@
-package com.car.rental.model.car.state;
+package com.car.rental.model.car;
 
 import com.car.rental.model.car.Car;
 
 /**
  * Created by sindhya on 7/31/17.
  */
-public interface CarState {
+public interface VehicleState {
 
     public String requestCar();
     public String denyCarRequest();

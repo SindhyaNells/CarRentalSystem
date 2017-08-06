@@ -5,12 +5,11 @@ import com.car.rental.controller.payment.CreditCardStrategy;
 import com.car.rental.controller.payment.PayPalStrategy;
 import com.car.rental.controller.payment.PaymentController;
 import com.car.rental.model.car.*;
-import com.car.rental.model.car.carType.CoupeCar;
-import com.car.rental.model.car.carType.LuxuryCar;
-import com.car.rental.model.car.carType.SUVCar;
-import com.car.rental.model.car.carType.SedanCar;
-import com.car.rental.model.enums.*;
-import com.car.rental.model.enums.Location;
+import com.car.rental.model.car.CoupeCar;
+import com.car.rental.model.car.LuxuryCar;
+import com.car.rental.model.car.SUVCar;
+import com.car.rental.model.car.SedanCar;
+import com.car.rental.model.car.Location;
 import com.car.rental.model.rent.Rental;
 import com.car.rental.model.user.Owner;
 import com.car.rental.model.user.Renter;
@@ -287,6 +286,8 @@ public class CarController {
 
         car.getRentalList().add(rental);
 
+        rental.getRenter().getRentalList().add(rental);
+
         System.out.println("Start Date:"+start_date+" End Date:"+end_date+" TotalAmount:"+total_amt);
 
         System.out.println("Select the Payment method:");
@@ -338,5 +339,29 @@ public class CarController {
 
 
     }
+
+    public void returnCar(User user){
+
+        Renter renter=(Renter)user;
+
+        Vehicle vehicle=null;
+        for(int i=0;i<renter.getRentalList().size();i++){
+            vehicle=renter.getRentalList().get(i).getVehicle();
+            if(vehicle.getState() instanceof RentedState){
+                Car car=(Car)vehicle;
+                break;
+            }
+        }
+
+        if(vehicle!=null) {
+
+            System.out.println(vehicle.getState().returnCar());
+        }else{
+            System.out.println("This renter has not rented any vehicles");
+        }
+
+    }
+
+
 
 }

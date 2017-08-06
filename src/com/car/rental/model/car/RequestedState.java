@@ -1,12 +1,9 @@
-package com.car.rental.model.car.state;
-
-import com.car.rental.model.car.Car;
-import com.car.rental.model.car.Vehicle;
+package com.car.rental.model.car;
 
 /**
  * Created by sindhya on 7/31/17.
  */
-public class RequestedState implements CarState {
+public class RequestedState implements VehicleState {
 
     Vehicle rentCar;
 
